@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ECommerce_Mobile_App</string>
+    <string name="shop_cart">SHOP CART</string>
 </resources>
