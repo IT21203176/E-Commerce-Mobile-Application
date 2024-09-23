@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">ECommerce_Mobile_App</string>
     <string name="shop_cart">SHOP CART</string>
+    <string name="my_cart">My Cart</string>
+    <string name="cart_empty_view_text">Your Cart is Empty</string>
+    <string name="checkout">Checkout</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="tax_fee">Tax</string>
+    <string name="lkr">LKR-</string>
+    <string name="lkr1">LKR.</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="qty">0</string>
+    <string name="total">Total</string>
+    <string name="title_cart_view_holder">Title</string>
 </resources>
