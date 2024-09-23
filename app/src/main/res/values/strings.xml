@@ -4,6 +4,7 @@
     <string name="my_cart">My Cart</string>
     <string name="cart_empty_view_text">Your Cart is Empty</string>
     <string name="checkout">Checkout</string>
+    <string name="order_summary">Order Summary</string>
     <string name="sub_total">Sub Total</string>
     <string name="delivery_fee">Delivery Fee</string>
     <string name="tax_fee">Tax</string>
@@ -14,4 +15,18 @@
     <string name="qty">0</string>
     <string name="total">Total</string>
     <string name="title_cart_view_holder">Title</string>
+    <string name="contact_info">Contact Information</string>
+    <string name="pvt_email">ahjssdias01@gmail.com</string>
+    <string name="email">Email</string>
+    <string name="pvt_phone">+94 75 146 1085</string>
+    <string name="phone">Phone</string>
+    <string name="pvt_address">32, Rose Garden, Kadawatha</string>
+    <string name="address">Address</string>
+    <string name="pay_method">Payment Method</string>
+    <string name="amex">American Express</string>
+
+    <string name="edit_icon_description">Edit Contact Information</string>
+    <string name="phone_icon_description">Phone Icon</string>
+    <string name="email_icon_description">Email Icon</string>
+    <string name="back_button_description">Back</string>
 </resources>
