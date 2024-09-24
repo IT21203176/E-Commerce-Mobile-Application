@@ -14,4 +14,8 @@
     <string name="qty">0</string>
     <string name="total">Total</string>
     <string name="title_cart_view_holder">Title</string>
+    <string name="intro_title"> Discover Your Next\n<font color = "#2a3577">Favorite Find!</font></string>
+    <string name="sub_title"><font color = "#2a3577">Shop the latest trends,unique products, and unbeatable deals all at your fingertips!</font></string>
+    <string name="product_info"><font color = "#000000">Shop the latest trends,unique products, and unbeatable deals all at your fingertips.Shop the latest trends,unique!Shop the latest trends,unique products, and unbeatable deals all at your fingertips.</font></string>
+
 </resources>
