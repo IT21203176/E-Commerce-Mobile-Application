@@ -28,11 +28,23 @@
     <string name="pay_method">Payment Method</string>
     <string name="amex">American Express</string>
     <string name="get_start_btn">Get Started</string>
+    <string name="app_heading">App Name</string>
+    <string name="welcome">Hello Again!</string>
+    <string name="login_description">Welcome Back You\'ve Been Missed!</string>
+    <string name="email_address">Email Address</string>
+    <string name="pwd">Password</string>
+    <string name="remember">Remember Me</string>
+    <string name="recovery_pwd">Recovery Password</string>
+    <string name="choice">Or Sign In with</string>
+    <string name="signup_choice">Don\'t have an account? <b>Register Now</b></string>
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
     <string name="email_icon_description">Email Icon</string>
     <string name="back_button_description">Back</string>
     <string name="logo_description">Logo Image</string>
+    <string name="login_icon_description">Logo Image</string>
+    <string name="fb_icon_description">Fb Image</string>
+    <string name="google_icon_description">Google Image</string>
 
 </resources>
