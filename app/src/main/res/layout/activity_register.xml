@@ -8,175 +8,190 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/card_view"
-        android:orientation="vertical"
-        android:padding="18dp">
+        android:layout_height="100dp"
+        android:paddingBottom="16dp">
 
         <TextView
+            android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Account "
-            android:textColor="@color/grey_bg"
-            android:textSize="32dp"
-            android:textStyle="bold" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/signup"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.222" />
 
-        <!--        <TextView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:alpha="0.7"-->
-        <!--            android:text="Let's create account together "-->
-        <!--            android:textColor="@color/bg_color" />-->
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/signup_description"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/constraintLayout4"
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="28dp"
-        android:layout_marginBottom="-20dp"
-        android:id="@+id/card_view"
-        >
+        app:cardCornerRadius="25dp"
+        android:layout_marginBottom="-20dp" >
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:paddingStart="32dp"
+            android:paddingTop="32sp"
+            android:paddingEnd="32sp"
+            android:paddingBottom="20sp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="First Name "
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-            <EditText
+                android:id="@+id/f_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:fontFamily="@font/poppins"
+                android:text="@string/f_name"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"/>
+            <EditText
+                android:id="@+id/f_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:autofillHints="name"
+                android:inputType="text" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last Name "
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-            <EditText
+                android:id="@+id/l_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:layout_marginTop="8sp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/l_name"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"/>
+            <EditText
+                android:id="@+id/l_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:autofillHints="name"
+                android:inputType="text" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NIC Number "
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-            <EditText
+                android:id="@+id/nic_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:layout_marginTop="8sp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/nic"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"/>
+            <EditText
+                android:id="@+id/nic_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:autofillHints="name"
+                android:inputType="text" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address "
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-            <EditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:layout_marginTop="8sp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/address"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"/>
+            <EditText
+                android:id="@+id/address_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:autofillHints="postalAddress"
+                android:inputType="textPostalAddress" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email Address"
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-            <EditText
+                android:id="@+id/email_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:layout_marginTop="8sp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/email_address"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"/>
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password"
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-            <EditText
+                android:id="@+id/passwrd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/password_icon"/>
+                android:layout_marginTop="8sp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/pwd"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"/>
+            <EditText
+                android:id="@+id/pwd_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                android:autofillHints="password"
+                android:drawableEnd="@drawable/password_icon"
+                android:inputType="textPassword" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/signup_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Register"
-                android:background="@color/dark_moderate_blue"
-                android:textColor="@color/grey_bg"
-                app:cornerRadius="28dp"/>
+                android:background="@drawable/dark_moderate_blue_bg"
+                android:fontFamily="@font/poppins"
+                android:text="@string/signup"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="5dp"/>
+                android:layout_height="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Or register with"
                 android:layout_gravity="center"
-                android:alpha="0.7"/>
+                android:alpha="0.7"
+                android:fontFamily="@font/poppins"
+                android:text="@string/choice" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -188,34 +203,30 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="12dp"
-                    android:background="@drawable/fb"/>
+                    android:background="@drawable/fb"
+                    android:contentDescription="@string/fb_icon_description"/>
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="12dp"
-                    android:background="@drawable/google"/>
+                    android:background="@drawable/google"
+                    android:contentDescription="@string/google_icon_description"/>
 
 
             </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"/>
 
             <TextView
+                android:id="@+id/login_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an account ?  Login"
                 android:layout_gravity="center"
-                android:alpha="0.7"/>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"/>
+                android:fontFamily="@font/poppins"
+                android:text="@string/sign_in_choice" />
 
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
+
+
 </RelativeLayout>

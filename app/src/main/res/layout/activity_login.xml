@@ -139,14 +139,16 @@
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/signin_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/dark_moderate_blue_bg"
                 android:fontFamily="@font/poppins"
-                android:text="Login"
+                android:text="@string/sign_in"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:clickable="true"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -193,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
+                android:clickable="true"
                 android:text="@string/signup_choice" />
 
             <View
@@ -200,7 +203,6 @@
                 android:layout_height="10dp"/>
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

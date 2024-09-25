@@ -9,10 +9,7 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +34,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Find the start and end of "Register Now" in the string
-        val start = spannableString.toString().indexOf("Register Now")
-        val end = start + "Register Now".length
+        val start = spannableString.toString().indexOf("Sign Up for Free")
+        val end = start + "Sign Up for Free".length
 
         // Apply the clickable span to the "Register Now" part of the text
         spannableString.setSpan(clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

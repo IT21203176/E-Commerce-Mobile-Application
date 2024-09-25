@@ -36,7 +36,15 @@
     <string name="remember">Remember Me</string>
     <string name="recovery_pwd">Recovery Password</string>
     <string name="choice">Or Sign In with</string>
-    <string name="signup_choice">Don\'t have an account? <b>Register Now</b></string>
+    <string name="signup_choice">Don\'t have an account? <b>Sign Up for Free</b></string>
+    <string name="signup">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="signup_description">Let\'s Create an Account</string>
+    <string name="f_name">First Name</string>
+    <string name="l_name">Last Name</string>
+    <string name="nic">NIC Number</string>
+    <string name="sign_in_choice">Already have an account? <b>Sign In</b></string>
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
@@ -46,5 +54,6 @@
     <string name="login_icon_description">Logo Image</string>
     <string name="fb_icon_description">Fb Image</string>
     <string name="google_icon_description">Google Image</string>
+    <string name="email_description">Email input field</string>
 
 </resources>
