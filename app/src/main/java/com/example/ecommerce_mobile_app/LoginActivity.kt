@@ -10,11 +10,18 @@ import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ecommerce_mobile_app.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val registerTextView: TextView = findViewById(R.id.register_txt)
 
@@ -45,5 +52,11 @@ class LoginActivity : AppCompatActivity() {
 
         // Enable movement method to make the link clickable
         registerTextView.movementMethod = LinkMovementMethod.getInstance()
+
+        // Set OnClickListener for the sign-in button
+        binding.signinbtn.setOnClickListener {
+            val intent = Intent(this@LoginActivity, ProductLActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

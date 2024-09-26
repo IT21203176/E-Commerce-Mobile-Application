@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="235dp"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/rec_product_img"
+        android:layout_width="164dp"
+        android:layout_height="164dp"
+        android:background="@drawable/grey_bg"
+        android:contentDescription="@string/shoe_img_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/shoes2" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/wishlist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/favourite1"
+        app:tint="@color/grey" />
+
+    <TextView
+        android:id="@+id/vholder_price_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/lkr"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rec_product_img" />
+
+    <TextView
+        android:id="@+id/vholder_rating_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/qty"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/vholder_price_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vholder_price_txt" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/star_icon_description"
+        app:layout_constraintBottom_toBottomOf="@+id/vholder_rating_txt"
+        app:layout_constraintEnd_toStartOf="@+id/vholder_rating_txt"
+        app:layout_constraintTop_toTopOf="@+id/vholder_rating_txt"
+        app:srcCompat="@drawable/star" />
+
+    <TextView
+        android:id="@+id/vholder_title_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/poppins"
+        android:singleLine="true"
+        android:text="@string/title_brand_view_holder"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vholder_price_txt" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

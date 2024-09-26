@@ -139,7 +139,7 @@
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signin_btn"
+                android:id="@+id/signinbtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/dark_moderate_blue_bg"
