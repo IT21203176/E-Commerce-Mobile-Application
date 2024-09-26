@@ -1,20 +1,22 @@
 package com.example.ecommerce_mobile_app
 
 import android.os.Bundle
-import android.provider.MediaStore.Images
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.example.ecommerce_mobile_app.Adapter.BrandAdapter
+import com.example.ecommerce_mobile_app.Adapter.SliderAdapter
+import com.example.ecommerce_mobile_app.Model.BrandModel
 import com.example.ecommerce_mobile_app.Model.SliderModel
 import com.example.ecommerce_mobile_app.ViewModel.MainViewModel
-import com.example.ecommerce_mobile_app.databinding.ActivityLoginBinding
 import com.example.ecommerce_mobile_app.databinding.ActivityProductLactivityBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProductLActivity : AppCompatActivity() {
 
@@ -29,6 +31,8 @@ class ProductLActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBanner()
+
+        initCategory()
     }
 
     private fun initBanner() {
@@ -56,4 +60,15 @@ class ProductLActivity : AppCompatActivity() {
             binding.dotIndicator.attachTo(binding.viewpagerSlider)
         }
     }
+
+    private fun initCategory(){
+        binding.progressBarCateg.visibility = View.VISIBLE
+        viewModel.categories.observe(this, Observer {
+            binding.viewCateg.layoutManager = LinearLayoutManager(this@ProductLActivity, LinearLayoutManager.HORIZONTAL, false)
+            binding.viewCateg.adapter = BrandAdapter(it)
+            binding.progressBarCateg.visibility = View.GONE
+        })
+        viewModel.loadCateogry()
+    }
+
 }
