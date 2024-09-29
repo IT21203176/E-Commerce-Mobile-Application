@@ -1,38 +1,32 @@
 package com.example.ecommerce_mobile_app
 
+import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitClient {
 
-    /*private const val BASE_URL = "http://localhost:8000/"
+    private const val BASE_URL ="https://wizard-world-api.herokuapp.com/"
+    //private const val BASE_URL ="https://localhost:44305/api/"
+    private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    val api: ApiService by lazy {
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
+
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+    val apiService : ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .client(okHttpClient)
             .build()
             .create(ApiService::class.java)
-    }*/
-
-    private const val BASE_URL = "http://localhost:8000/"
-
-    /*val instance: ApiService by lazy {
-        val retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
-
-        retrofit.create(ApiService::class.java)
-    }*/
-
-    private val okHttp : OkHttpClient.Builder = OkHttpClient.Builder()
-
-    private val builder : Retrofit.Builder = Retrofit.Builder().baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttp.build())
-
-    private val retrofit : Retrofit = builder.build()
-
-    fun <T> buildService(serviceType: Class<T>): T {
-        return retrofit.create(serviceType)
     }
 }

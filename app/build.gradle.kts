@@ -66,8 +66,24 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.15.1")
 
     // Add Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
+
+    // Compose View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+
+    // Compose Live Data
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.2")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+
+    // Moshi
+    implementation("com.squareup.moshi:moshi:1.15.1")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
+
+    // OkHttp Interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
 }

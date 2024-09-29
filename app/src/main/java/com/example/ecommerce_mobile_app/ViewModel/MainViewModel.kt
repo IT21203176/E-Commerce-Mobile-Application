@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommerce_mobile_app.Model.BrandModel
 import com.example.ecommerce_mobile_app.Model.SliderModel
+import com.example.ecommerce_mobile_app.ProductListsItem
 import com.example.ecommerce_mobile_app.RetrofitClient
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
+import retrofit2.Retrofit
 import java.io.IOError
 
 class MainViewModel():ViewModel() {
@@ -25,11 +27,10 @@ class MainViewModel():ViewModel() {
     private val firebaseDatabase = FirebaseDatabase.getInstance()
 
     private val _banner = MutableLiveData<List<SliderModel>>()
-    private val _category = MutableLiveData<MutableList<BrandModel>>()
-
-    val categories : LiveData<MutableList<BrandModel>> = _category
     val banners:LiveData<List<SliderModel>> = _banner
 
+    private val _category = MutableLiveData<List<ProductListsItem>>()
+    val category : LiveData<List<ProductListsItem>> = _category
 
     fun loadBanners(){
         val Ref = firebaseDatabase.getReference("Banner")
@@ -52,10 +53,38 @@ class MainViewModel():ViewModel() {
         })
     }
 
-    fun loadCateogry() {
-            /* -----------------------------------------------------------------------------
-            --------------------------------------------------------------------------------
-             */
+    fun loadCategory() {
+        /*viewModelScope.launch {
+            try {
+                // Fetch the product list from the API
+                val productList = RetrofitClient.apiService.getProductList()
+
+                // Build the string with the category names
+                val categoryNames = productList.joinToString(separator = "\n") { it.name }
+
+                // Update LiveData
+                _category.value = categoryNames
+            } catch (e: Exception) {
+                // Handle any errors (e.g., show a message or log it)
+                _category.value = "Failed to load categories"
+            }
+        }*/
+
+        viewModelScope.launch {
+            try {
+                // Fetch the product list from the API
+                val productList = RetrofitClient.apiService.getProductList()
+
+                // Update LiveData with the product list
+                _category.value = productList.toMutableList() // Keep it as MutableList<ProductListItem>
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+                // Set an empty list in case of failure
+                _category.value = emptyList()
+            }
+        }
     }
+
 
 }
