@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.ecommerce_mobile_app.Adapter.BrandAdapter
+import com.example.ecommerce_mobile_app.Adapter.PopProductAdapter
 import com.example.ecommerce_mobile_app.Adapter.SliderAdapter
 import com.example.ecommerce_mobile_app.Model.BrandModel
 import com.example.ecommerce_mobile_app.Model.BrandModelArray
@@ -42,6 +44,8 @@ class ProductLActivity : AppCompatActivity() {
         initBanner()
 
         initCategory()
+
+        initPopProduct()
 
         //getProductList()
     }
@@ -176,6 +180,29 @@ class ProductLActivity : AppCompatActivity() {
 
         binding.progressBarCateg.visibility = View.GONE
         viewModel.loadCategory()
+    }
+
+    private fun initPopProduct() {
+        /*binding.progressBarCateg.visibility = View.VISIBLE
+
+
+        // Observe the categories data from the ViewModel
+        viewModel.categories.observe(this, Observer { categoryData ->
+            // Set the data on textView35 (category name)
+            binding.textView35.text = categoryData.toString()
+            binding.progressBarCateg.visibility = View.GONE
+        })
+
+        // Fetch the categories (API call)
+        viewModel.loadCategory() // You need to implement this function in your ViewModel*/
+        binding.viewPopular.layoutManager = GridLayoutManager(this@ProductLActivity, 2)
+
+        viewModel.popProducts.observe(this) { popProductList ->
+            binding.viewPopular.adapter = PopProductAdapter(popProductList.toMutableList())
+        }
+
+        binding.progressBarProduct.visibility = View.GONE
+        viewModel.loadPopular()
     }
 
 

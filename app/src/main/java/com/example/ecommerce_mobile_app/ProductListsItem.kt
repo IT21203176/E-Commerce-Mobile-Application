@@ -2,11 +2,18 @@ package com.example.ecommerce_mobile_app
 
 import java.util.Date
 
-/*data class ProductListsItem(
+data class ProductListsItem(
     val description: String,
     val id: String,
     val isActive: Boolean,
     val name: String
+)
+
+//data class ProductListsItem(
+//    val description: String,
+//    val id: String,
+//    val isActive: Boolean,
+//    val name: String
 
     /*val idCustomer: Int,
     val Full_Name: String,
@@ -19,9 +26,9 @@ import java.util.Date
     val NIC: String,
     val discount_id: Int*/
 
-)*/
+//)
 
-data class ProductListsItem(
+/*data class ProductListsItem(
     val id: String,
     val name: String,
     val houseColours: String,
@@ -32,7 +39,7 @@ data class ProductListsItem(
     val commonRoom: String,
     val heads: List<HouseHead>,
     val traits: List<Trait>
-)
+//)
 
 data class HouseHead(
     val id: String,
@@ -43,4 +50,4 @@ data class HouseHead(
 data class Trait(
     val id: String,
     val name: String
-)
+)*/

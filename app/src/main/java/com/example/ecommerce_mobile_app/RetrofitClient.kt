@@ -9,8 +9,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL ="https://wizard-world-api.herokuapp.com/"
-    //private const val BASE_URL ="https://localhost:44305/api/"
+    //private const val BASE_URL ="https://wizard-world-api.herokuapp.com/"
+    private const val BASE_URL ="http://10.0.2.2:5129/api/"
+    //private const val BASE_URL ="https://jsonplaceholder.typicode.com/"
+    //private const val BASE_URL ="https://fake-json-api.mock.beeceptor.com/"
+
     private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     private val okHttpClient = OkHttpClient.Builder()
