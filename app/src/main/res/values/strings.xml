@@ -74,5 +74,6 @@
     <string name="may_be_later">May Be, later</string>
     <string name="rate_now">Rate Now</string>
     <string name="profile_details">Profile</string>
+    <string name="comments">Comments</string>
 
 </resources>
