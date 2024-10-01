@@ -14,15 +14,9 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.ecommerce_mobile_app.Adapter.BrandAdapter
 import com.example.ecommerce_mobile_app.Adapter.SliderAdapter
 import com.example.ecommerce_mobile_app.Model.BrandModel
-import com.example.ecommerce_mobile_app.Model.BrandModelArray
 import com.example.ecommerce_mobile_app.Model.SliderModel
 import com.example.ecommerce_mobile_app.ViewModel.MainViewModel
 import com.example.ecommerce_mobile_app.databinding.ActivityProductLactivityBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 //const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 //const val BASE_URL = "https://10.0.2.2:44305/api/"

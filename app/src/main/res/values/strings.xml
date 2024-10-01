@@ -68,5 +68,10 @@
     <string name="fb_icon_description">Fb Image</string>
     <string name="google_icon_description">Google Image</string>
     <string name="email_description">Email input field</string>
+    <string name="rate_me">Rate me</string>
+    <string name="if_you_are_enjoy_using_our_app_would_you_mind_rating_us">If you are enjoy using our app,would you mind rating us..</string>
+    <string name="remarks">Remarks</string>
+    <string name="may_be_later">May Be, later</string>
+    <string name="rate_now">Rate Now</string>
 
 </resources>

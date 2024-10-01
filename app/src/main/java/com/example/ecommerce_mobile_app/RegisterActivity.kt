@@ -19,7 +19,7 @@ import com.example.ecommerce_mobile_app.databinding.ActivityRegisterBinding
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var databaseHelper: DatabaseHelper
+    //private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         setContentView(R.layout.activity_register)
 
-        databaseHelper = DatabaseHelper(this)
+        //databaseHelper = DatabaseHelper(this)
 
         val loginTextView: TextView = findViewById(R.id.login_txt)
 
@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerDatabase(first_Name: String, last_Name: String, nic: String, address: String, email: String, passwordHash: String, username: String, role: String, averageRating: Double, isActive: Boolean) {
+    /*private fun registerDatabase(first_Name: String, last_Name: String, nic: String, address: String, email: String, passwordHash: String, username: String, role: String, averageRating: Double, isActive: Boolean) {
         val insertedRowId = databaseHelper.insertUser(first_Name, last_Name, nic, address, email, passwordHash, username, role, averageRating, isActive)
         if (insertedRowId != -1L) {
             Toast.makeText(this, "SignUp Successful", Toast.LENGTH_SHORT).show()
@@ -81,5 +81,5 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "SignUp Failed", Toast.LENGTH_SHORT).show()
         }
-    }
+    }*/
 }
