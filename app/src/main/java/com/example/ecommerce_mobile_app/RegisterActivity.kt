@@ -8,16 +8,26 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ecommerce_mobile_app.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var databaseHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setContentView(R.layout.activity_register)
+
+        databaseHelper = DatabaseHelper(this)
 
         val loginTextView: TextView = findViewById(R.id.login_txt)
 
@@ -48,5 +58,28 @@ class RegisterActivity : AppCompatActivity() {
 
         // Enable movement method to make the link clickable
         loginTextView.movementMethod = LinkMovementMethod.getInstance()
+
+        binding.signupBtn.setOnClickListener {
+            val signupFName = binding.fNameInput.text.toString()
+            val signupLName = binding.lNameInput.text.toString()
+            val signupNic = binding.nicInput.text.toString()
+            val signupAddress = binding.addressInput.toString()
+            val signupEmail = binding.emailInput.toString()
+            val signupPassword = binding.pwdInput.toString()
+
+            //registerDatabase(signupFName, signupLName, signupNic, signupAddress, signupEmail, signupPassword)
+        }
+    }
+
+    private fun registerDatabase(first_Name: String, last_Name: String, nic: String, address: String, email: String, passwordHash: String, username: String, role: String, averageRating: Double, isActive: Boolean) {
+        val insertedRowId = databaseHelper.insertUser(first_Name, last_Name, nic, address, email, passwordHash, username, role, averageRating, isActive)
+        if (insertedRowId != -1L) {
+            Toast.makeText(this, "SignUp Successful", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            Toast.makeText(this, "SignUp Failed", Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -56,6 +56,13 @@
     <string name="order">My Order</string>
     <string name="cart">Cart</string>
     <string name="profile">Profile</string>
+    <string name="pay_success">Your Payment is Successful.</string>
+    <string name="backToShop">Back to Shopping</string>
+    <string name="stockStatus">In Stock</string>
+    <string name="productDescrip">Product Description</string>
+    <string name="descrip">Description</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="buy_now">Buy Now</string>
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
@@ -68,5 +75,6 @@
     <string name="fb_icon_description">Fb Image</string>
     <string name="google_icon_description">Google Image</string>
     <string name="email_description">Email input field</string>
+    <string name="payment_success_description">Payment Success</string>
 
 </resources>
