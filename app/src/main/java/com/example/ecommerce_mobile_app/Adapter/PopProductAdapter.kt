@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
+import com.example.ecommerce_mobile_app.DetailActivity
 import com.example.ecommerce_mobile_app.Model.ItemModel
 import com.example.ecommerce_mobile_app.databinding.ViewholderRecommendedBinding
+import java.text.DecimalFormat
 
 class PopProductAdapter(val items: MutableList<ItemModel>):RecyclerView.Adapter<PopProductAdapter.Viewholder>() {
 
@@ -29,17 +31,45 @@ class PopProductAdapter(val items: MutableList<ItemModel>):RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: PopProductAdapter.Viewholder, position: Int) {
-        holder.binding.vholderTitleTxt.text = items[position].name
+        /*holder.binding.vholderTitleTxt.text = items[position].name
+        holder.binding.vholderPriceTxt.text = "LKR. "+items[position].price.toString()
+        holder.binding.vholderRatingTxt.text = items[position].stockStatus
 
         val requestOptions = RequestOptions().transform(CenterCrop())
         Glide.with(holder.itemView.context)
-            .load(items[position].photo)
+            .load(items[position].image)
             .apply(requestOptions)
             .into(holder.binding.recProductImg)
 
-        /*holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("product", items[position])
+            holder.itemView.context.startActivity(intent)
         }*/
+
+        val product = items[position]
+
+        // Set product name, price, and stock status in the ViewHolder
+        holder.binding.vholderTitleTxt.text = product.name
+        //holder.binding.vholderPriceTxt.text = "LKR. "+items[position].price.toString()
+        val decimalFormat = DecimalFormat("#,###.00")
+        holder.binding.vholderPriceTxt.text = "LKR. ${decimalFormat.format(items[position].price)}"
+        holder.binding.vholderRatingTxt.text = product.stockStatus
+
+        // Load product image using Glide
+        val requestOptions = RequestOptions().transform(CenterCrop())
+        Glide.with(holder.itemView.context)
+            .load(product.image)
+            .apply(requestOptions)
+            .into(holder.binding.recProductImg)
+
+        // Handle item click and navigate to DetailActivity, passing the selected product data
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("product", product) // Pass the product data
+            holder.itemView.context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int = items.size

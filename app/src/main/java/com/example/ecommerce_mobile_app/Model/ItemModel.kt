@@ -1,5 +1,7 @@
 package com.example.ecommerce_mobile_app.Model
 
+import java.io.Serializable
+
 data class ItemModel(
     /*val albumId: Int,
     val id: Int,
@@ -16,18 +18,17 @@ data class ItemModel(
         val numberInCart: Int
      */
 
-    val id: Int,
+    val id: String,
     val name: String,
-    val company: String,
-    val username: String,
-    val email: String,
-    val address: String,
-    val zip: String,
-    val state: String,
-    val country: String,
-    val phone: String,
-    val photo: String
-)
+    val price: Int,
+    val description: String,
+    val stock: Int,
+    val lowStockLvl: Int,
+    val stockStatus: String,
+    val image: String,
+    val isActive: Boolean,
+    val productListName: String
+): Serializable
 
 
 

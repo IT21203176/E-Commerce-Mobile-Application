@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ecommerce_mobile_app.Model.BrandModel
 import com.example.ecommerce_mobile_app.Model.ItemModel
 import com.example.ecommerce_mobile_app.Model.SliderModel
 import com.example.ecommerce_mobile_app.ProductListsItem

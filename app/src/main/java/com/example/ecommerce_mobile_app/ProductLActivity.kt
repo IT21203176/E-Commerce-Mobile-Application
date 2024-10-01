@@ -15,8 +15,6 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.ecommerce_mobile_app.Adapter.BrandAdapter
 import com.example.ecommerce_mobile_app.Adapter.PopProductAdapter
 import com.example.ecommerce_mobile_app.Adapter.SliderAdapter
-import com.example.ecommerce_mobile_app.Model.BrandModel
-import com.example.ecommerce_mobile_app.Model.BrandModelArray
 import com.example.ecommerce_mobile_app.Model.SliderModel
 import com.example.ecommerce_mobile_app.ViewModel.MainViewModel
 import com.example.ecommerce_mobile_app.databinding.ActivityProductLactivityBinding
@@ -26,9 +24,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-//const val BASE_URL = "https://10.0.2.2:44305/api/"
-//const val BASE_URL = "https://interview.supershinecarcare.lk/api/"
+
 class ProductLActivity : AppCompatActivity() {
 
     private val viewModel = MainViewModel()
@@ -131,33 +127,7 @@ class ProductLActivity : AppCompatActivity() {
         viewModel.loadCateogry()
     }*/
 
-    /*private fun getProductList() {
-        val api = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(ApiService::class.java)
 
-        api.getProductList().enqueue(object :Callback<List<BrandModel>>{
-            override fun onResponse(
-                call: Call<List<BrandModel>>,
-                response: Response<List<BrandModel>>
-            ) {
-                if (response.isSuccessful){
-                    response.body()?.let {
-                        for (category in it) {
-                            Log.i(TAG, "onResponse: ${category.name}")
-                        }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<BrandModel>>, t: Throwable) {
-                Log.i(TAG, "onFailure: ${t.message}")
-            }
-
-        })
-    }*/
 
     private fun initCategory() {
         /*binding.progressBarCateg.visibility = View.VISIBLE
