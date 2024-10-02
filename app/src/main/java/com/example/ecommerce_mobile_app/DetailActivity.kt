@@ -1,9 +1,11 @@
 package com.example.ecommerce_mobile_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -22,6 +24,7 @@ import java.text.DecimalFormat
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
+    lateinit var product: ItemModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +66,24 @@ class DetailActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.productBackBtn).setOnClickListener {
             finish()
         }
+
+        // Modify buyNowBtn click to add only the selected product to the cart
+        binding.buyNowBtn.setOnClickListener {
+            if (product.stock > 0) { // Check if the product is in stock
+                Cart.addItem(product) // Add only the selected product
+                Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "${product.name} is out of stock", Toast.LENGTH_SHORT).show() // Inform user
+            }
+        }
+
+        // Modify addToCartBtn to go directly to the cart
+        binding.addToCartBtn.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
+
+
 
 }
