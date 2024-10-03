@@ -3,6 +3,7 @@ package com.example.ecommerce_mobile_app
 import com.example.ecommerce_mobile_app.Model.ItemModel
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -21,4 +22,8 @@ interface ApiService {
 
     @GET("Products")
     suspend fun getPopProductList():List<ItemModel>
+
+    @GET("Products")
+    suspend fun getProductsByList(@Query("productListName") productListName: String): List<ItemModel>
+
 }
