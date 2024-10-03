@@ -68,5 +68,6 @@
     <string name="fb_icon_description">Fb Image</string>
     <string name="google_icon_description">Google Image</string>
     <string name="email_description">Email input field</string>
+    <string name="track_order">Track Order</string>
 
 </resources>
