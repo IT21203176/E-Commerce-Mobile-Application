@@ -150,6 +150,7 @@ class ProductLActivity : AppCompatActivity() {
 
         binding.progressBarCateg.visibility = View.GONE
         viewModel.loadCategory()
+
     }
 
     private fun initPopProduct() {

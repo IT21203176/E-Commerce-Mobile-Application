@@ -66,6 +66,7 @@
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
+    <string name="search_icon_description">Search Icon</string>
     <string name="email_icon_description">Email Icon</string>
     <string name="shoe_img_description">Shoe Image</string>
     <string name="back_button_description">Back</string>

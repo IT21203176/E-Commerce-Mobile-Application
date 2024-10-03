@@ -35,6 +35,7 @@ class MainViewModel():ViewModel() {
     private val _popularProducts = MutableLiveData<List<ItemModel>>()
     val popProducts : LiveData<List<ItemModel>> = _popularProducts
 
+
     fun loadBanners(){
         val Ref = firebaseDatabase.getReference("Banner")
         Ref.addValueEventListener(object : ValueEventListener{
@@ -90,23 +91,8 @@ class MainViewModel():ViewModel() {
     }
 
     fun loadPopular() {
+
         /*viewModelScope.launch {
-            try {
-                // Fetch the product list from the API
-                val productList = RetrofitClient.apiService.getProductList()
-
-                // Build the string with the category names
-                val categoryNames = productList.joinToString(separator = "\n") { it.name }
-
-                // Update LiveData
-                _category.value = categoryNames
-            } catch (e: Exception) {
-                // Handle any errors (e.g., show a message or log it)
-                _category.value = "Failed to load categories"
-            }
-        }*/
-
-        viewModelScope.launch {
             try {
                 // Fetch the product list from the API
                 val popProductList = RetrofitClient.apiService.getPopProductList()
@@ -119,7 +105,30 @@ class MainViewModel():ViewModel() {
                 // Set an empty list in case of failure
                 _popularProducts.value = emptyList()
             }
+        }*/
+
+        viewModelScope.launch {
+            try {
+                // Fetch the product list from the API
+                val popProductList = RetrofitClient.apiService.getPopProductList()
+
+                // Randomly select 4 products
+                val randomPopularProducts = if (popProductList.size > 4) {
+                    popProductList.shuffled().take(4)
+                } else {
+                    popProductList // If the list has less than or equal to 4 items, return the entire list
+                }
+
+                // Update LiveData with the randomly selected products
+                _popularProducts.value = randomPopularProducts.toMutableList()
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+                // Set an empty list in case of failure
+                _popularProducts.value = emptyList()
+            }
         }
     }
+
 
 }
