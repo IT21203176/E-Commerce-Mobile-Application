@@ -1,9 +1,17 @@
 package com.example.ecommerce_mobile_app
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import com.example.ecommerce_mobile_app.Model.UserModel
 import com.example.ecommerce_mobile_app.databinding.ActivityRegisterBinding
 import retrofit2.Call
@@ -24,10 +32,10 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val loginTextView: TextView = findViewById(R.id.login_txt)
+        val loginTextView: TextView = findViewById(R.id.login_txt)
 
         // Set the text from the string resource with HTML tags
-        val text = HtmlCompat.fromHtml(getString(R.string.sign_in_choice),HtmlCompat.FROM_HTML_MODE_LEGACY)
+        val text = HtmlCompat.fromHtml(getString(R.string.sign_in_choice), HtmlCompat.FROM_HTML_MODE_LEGACY)
 
         // Create a SpannableString from the parsed HTML string
         val spannableString = SpannableString(text)
@@ -52,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
         loginTextView.text = spannableString
 
         // Enable movement method to make the link clickable
-        loginTextView.movementMethod = LinkMovementMethod.getInstance()*/
+        loginTextView.movementMethod = LinkMovementMethod.getInstance()
 
         // Handle Sign Up button click
         binding.signupBtn.setOnClickListener {
@@ -88,25 +96,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun registerUser(userModel: UserModel) {
-        val call = RetrofitClient.apiService.registerUser(userModel)
-        call.enqueue(object : Callback<UserModel> {
-            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@RegisterActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
-                    // Redirect to another activity (e.g., LoginActivity)
-                } else {
-                    val errorBody = response.errorBody()?.string()
-                    Toast.makeText(this@RegisterActivity, "Registration Failed: $errorBody", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                Toast.makeText(this@RegisterActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }*/
-
     private fun registerUser(userModel: UserModel) {
         val call = RetrofitClient.apiService.registerUser(userModel)
         call.enqueue(object : Callback<UserModel> {
@@ -121,6 +110,10 @@ class RegisterActivity : AppCompatActivity() {
                     binding.pwdInput.text.clear()
                     binding.nicInput.text.clear()
                     binding.addressInput.text.clear()
+
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
 
                 } else {
                     val errorBody = response.errorBody()?.string()
