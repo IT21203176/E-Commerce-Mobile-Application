@@ -185,7 +185,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="290dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginStart="16dp"
@@ -215,15 +215,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView38"
                     app:srcCompat="@drawable/user" />
 
-                <TextView
+                <EditText
                     android:id="@+id/OrderRecepName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
                     android:text="@string/r_name"
                     android:layout_marginStart="16dp"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
+                    android:autofillHints="name"
+                    android:inputType="text"
+                    android:background="@drawable/no_underline_edittext"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView15"
                     app:layout_constraintStart_toEndOf="@+id/imageView15"
                     app:layout_constraintTop_toTopOf="@+id/imageView15" />
@@ -271,15 +274,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView26"
                     app:srcCompat="@drawable/mail" />
 
-                <TextView
+                <EditText
                     android:id="@+id/OrderRecepAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/pvt_email"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
+                    android:background="@drawable/no_underline_edittext"
+                    android:autofillHints="name"
+                    android:inputType="text"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView17"
                     app:layout_constraintStart_toEndOf="@+id/imageView17"
                     app:layout_constraintTop_toTopOf="@+id/imageView17"/>
@@ -327,16 +333,19 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView28"
                     app:srcCompat="@drawable/call" />
 
-                <TextView
+                <EditText
                     android:id="@+id/OrderRecepMobile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="6dp"
                     android:text="@string/pvt_phone"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
+                    android:autofillHints="phone"
+                    android:inputType="phone"
+                    android:background="@drawable/no_underline_edittext"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView20"
                     app:layout_constraintStart_toEndOf="@+id/imageView20"
                     app:layout_constraintTop_toTopOf="@+id/imageView20" />
@@ -383,15 +392,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView30"
                     app:srcCompat="@drawable/location" />
 
-                <TextView
+                <EditText
                     android:id="@+id/OrderRecepEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/pvt_address"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
+                    android:autofillHints="postalAddress"
+                    android:inputType="textPostalAddress"
+                    android:background="@drawable/no_underline_edittext"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView22"
                     app:layout_constraintStart_toEndOf="@+id/imageView22"
                     app:layout_constraintTop_toTopOf="@+id/imageView22" />
