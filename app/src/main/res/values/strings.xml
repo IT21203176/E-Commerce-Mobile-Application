@@ -55,6 +55,8 @@
     <string name="wishlist">Wishlist</string>
     <string name="order">My Order</string>
     <string name="cart">Cart</string>
+    <string name="name">Name</string>
+    <string name="r_name">Janithya Dias</string>
     <string name="profile">Profile</string>
     <string name="pay_success">Your Payment is Successful.</string>
     <string name="backToShop">Back to Shopping</string>
@@ -66,6 +68,8 @@
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
+    <string name="address_icon_description">Address Icon</string>
+    <string name="user_icon_description">User Icon</string>
     <string name="search_icon_description">Search Icon</string>
     <string name="email_icon_description">Email Icon</string>
     <string name="shoe_img_description">Shoe Image</string>
