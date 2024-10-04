@@ -1,35 +1,30 @@
 package com.example.ecommerce_mobile_app
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.view.View
-import android.widget.TextView
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.HtmlCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.ecommerce_mobile_app.Model.UserModel
 import com.example.ecommerce_mobile_app.databinding.ActivityRegisterBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
+    data class RegisterRequest(
+        val newUser: UserModel // Wrap the UserModel inside newUser
+    )
 
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //setContentView(R.layout.activity_register)
+
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_register)
 
-        databaseHelper = DatabaseHelper(this)
-
-        val loginTextView: TextView = findViewById(R.id.login_txt)
+        /*val loginTextView: TextView = findViewById(R.id.login_txt)
 
         // Set the text from the string resource with HTML tags
         val text = HtmlCompat.fromHtml(getString(R.string.sign_in_choice),HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -57,29 +52,87 @@ class RegisterActivity : AppCompatActivity() {
         loginTextView.text = spannableString
 
         // Enable movement method to make the link clickable
-        loginTextView.movementMethod = LinkMovementMethod.getInstance()
+        loginTextView.movementMethod = LinkMovementMethod.getInstance()*/
 
+        // Handle Sign Up button click
         binding.signupBtn.setOnClickListener {
-            val signupFName = binding.fNameInput.text.toString()
-            val signupLName = binding.lNameInput.text.toString()
-            val signupNic = binding.nicInput.text.toString()
-            val signupAddress = binding.addressInput.toString()
-            val signupEmail = binding.emailInput.toString()
-            val signupPassword = binding.pwdInput.toString()
+            val firstName = binding.fNameInput.text.toString().trim()
+            val lastName = binding.lNameInput.text.toString().trim()
+            val email = binding.emailInput.text.toString().trim()
+            val password = binding.pwdInput.text.toString().trim()
+            val nic = binding.nicInput.text.toString().trim()
+            val address = binding.addressInput.text.toString().trim()
 
-            //registerDatabase(signupFName, signupLName, signupNic, signupAddress, signupEmail, signupPassword)
+            // Validate inputs
+            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || nic.isEmpty() || address.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Create a UserModel object
+            val userModel = UserModel(
+                id = "",
+                first_Name = firstName,
+                last_Name = lastName,
+                email = email,
+                passwordHash = password, // You might want to hash the password before sending it
+                nic = nic,
+                address = address,
+                role = "0", // Assuming 0 represents a normal user
+                averageRating = 0.0,
+                isActive = 1
+            )
+
+            // Call the API to register the user
+            registerUser(userModel)
         }
     }
 
-    private fun registerDatabase(first_Name: String, last_Name: String, nic: String, address: String, email: String, passwordHash: String, username: String, role: String, averageRating: Double, isActive: Boolean) {
-        val insertedRowId = databaseHelper.insertUser(first_Name, last_Name, nic, address, email, passwordHash, username, role, averageRating, isActive)
-        if (insertedRowId != -1L) {
-            Toast.makeText(this, "SignUp Successful", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            Toast.makeText(this, "SignUp Failed", Toast.LENGTH_SHORT).show()
-        }
+    /*private fun registerUser(userModel: UserModel) {
+        val call = RetrofitClient.apiService.registerUser(userModel)
+        call.enqueue(object : Callback<UserModel> {
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@RegisterActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
+                    // Redirect to another activity (e.g., LoginActivity)
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Toast.makeText(this@RegisterActivity, "Registration Failed: $errorBody", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Toast.makeText(this@RegisterActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }*/
+
+    private fun registerUser(userModel: UserModel) {
+        val call = RetrofitClient.apiService.registerUser(userModel)
+        call.enqueue(object : Callback<UserModel> {
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@RegisterActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
+
+                    // Clear input fields
+                    binding.fNameInput.text.clear()
+                    binding.lNameInput.text.clear()
+                    binding.emailInput.text.clear()
+                    binding.pwdInput.text.clear()
+                    binding.nicInput.text.clear()
+                    binding.addressInput.text.clear()
+
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Toast.makeText(this@RegisterActivity, "Registration Failed: $errorBody", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Toast.makeText(this@RegisterActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Log.e("RegisterActivity", "Error: ${t.message}")
+            }
+        })
     }
+
 }
