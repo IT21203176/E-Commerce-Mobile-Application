@@ -17,6 +17,9 @@
         android:theme="@style/Theme.ECommerce_Mobile_App"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+       <activity
+            android:name=".AllCommentsActivity"
+            android:exported="false" />
         <activity
             android:name=".CategoryProductActivity"
             android:exported="false" />
