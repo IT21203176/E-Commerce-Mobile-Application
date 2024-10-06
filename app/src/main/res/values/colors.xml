@@ -10,5 +10,6 @@
     <color name="light_bg_blue">#DCEBF4</color>
     <color name="green">#189924</color>
     <color name="red">#DB1818</color>
+    <color name="orange">#FF5722</color>
 
 </resources>

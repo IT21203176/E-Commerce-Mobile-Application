@@ -16,6 +16,7 @@ import com.example.ecommerce_mobile_app.Adapter.BrandAdapter
 import com.example.ecommerce_mobile_app.Adapter.PopProductAdapter
 import com.example.ecommerce_mobile_app.Adapter.SliderAdapter
 import com.example.ecommerce_mobile_app.Model.SliderModel
+import com.example.ecommerce_mobile_app.Model.UserModel
 import com.example.ecommerce_mobile_app.ViewModel.MainViewModel
 import com.example.ecommerce_mobile_app.databinding.ActivityProductLactivityBinding
 import retrofit2.Call
@@ -30,12 +31,20 @@ class ProductLActivity : AppCompatActivity() {
     private val viewModel = MainViewModel()
             private lateinit var binding: ActivityProductLactivityBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_lactivity)
 
         binding = ActivityProductLactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Retrieve the first name and last name from the Intent
+        val firstName = intent.getStringExtra("FIRST_NAME")
+        val lastName = intent.getStringExtra("LAST_NAME")
+
+        // Set the text in the TextView
+        binding.textView34.text = getString(R.string.name_here, firstName, lastName)
 
         initBanner()
 
