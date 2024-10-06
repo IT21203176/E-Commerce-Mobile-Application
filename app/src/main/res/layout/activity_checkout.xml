@@ -74,7 +74,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/subTotAmountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -98,7 +98,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/DeliveryAmountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -122,7 +122,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <TextView
-                    android:id="@+id/textView19"
+                    android:id="@+id/TaxAmountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -160,7 +160,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/view2" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/TotalAmountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -185,170 +185,239 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_height="290dp"
                 android:layout_marginTop="0dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginBottom="0dp"
-                android:background="@drawable/light_blue_bg">
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/light_blue_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/textView38"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/email"
+                    android:text="@string/name"
                     android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/imageView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:padding="0dp"
-                    app:layout_constraintStart_toStartOf="@+id/textView25"
-                    app:layout_constraintTop_toBottomOf="@+id/textView25"
-                    app:srcCompat="@drawable/mail" />
+                    android:contentDescription="@string/user_icon_description"
+                    app:layout_constraintStart_toStartOf="@+id/textView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView38"
+                    app:srcCompat="@drawable/user" />
 
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <EditText
+                    android:id="@+id/OrderRecepName"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
+                    android:text="@string/r_name"
                     android:layout_marginStart="16dp"
-                    android:text="@string/pvt_email"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                    android:autofillHints="name"
+                    android:inputType="text"
+                    android:background="@drawable/no_underline_edittext"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+                    app:layout_constraintStart_toEndOf="@+id/imageView15"
+                    app:layout_constraintTop_toTopOf="@+id/imageView15" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:contentDescription="@string/edit_icon_description"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView26"
+                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecepName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView26"
-                    app:srcCompat="@drawable/baseline_edit_24" />
+                    app:layout_constraintTop_toTopOf="@+id/OrderRecepName"
+                    app:srcCompat="@drawable/baseline_edit_24"
+                    android:layout_marginEnd="16dp"/>
 
                 <View
                     android:id="@+id/view3"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="#402196F3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                    android:background="#400A4776"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/textView26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/phone"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/email"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/view3" />
+                    app:layout_constraintStart_toStartOf="@+id/imageView15"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageView17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:padding="0dp"
-                    app:layout_constraintStart_toStartOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/textView27"
-                    app:srcCompat="@drawable/call" />
+                    android:contentDescription="@string/email_icon_description"
+                    app:layout_constraintStart_toStartOf="@+id/imageView15"
+                    app:layout_constraintTop_toBottomOf="@+id/textView26"
+                    app:srcCompat="@drawable/mail" />
+
+                <EditText
+                    android:id="@+id/OrderRecepAddress"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/pvt_email"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/no_underline_edittext"
+                    android:autofillHints="name"
+                    android:inputType="text"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView17"
+                    app:layout_constraintStart_toEndOf="@+id/imageView17"
+                    app:layout_constraintTop_toTopOf="@+id/imageView17"/>
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecepAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/OrderRecepAddress"
+                    app:srcCompat="@drawable/baseline_edit_24"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/edit_icon_description"/>
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView17"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#400A4776"/>
 
                 <TextView
                     android:id="@+id/textView28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/phone"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/imageView17"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+
+                <ImageView
+                    android:id="@+id/imageView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/phone_icon_description"
+                    app:layout_constraintStart_toStartOf="@+id/imageView17"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28"
+                    app:srcCompat="@drawable/call" />
+
+                <EditText
+                    android:id="@+id/OrderRecepMobile"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
                     android:text="@string/pvt_phone"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toTopOf="@+id/imageView5" />
+                    android:autofillHints="phone"
+                    android:inputType="phone"
+                    android:background="@drawable/no_underline_edittext"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView20"
+                    app:layout_constraintStart_toEndOf="@+id/imageView20"
+                    app:layout_constraintTop_toTopOf="@+id/imageView20" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView28"
+                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecepMobile"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView28"
+                    app:layout_constraintTop_toTopOf="@+id/OrderRecepMobile"
                     app:srcCompat="@drawable/baseline_edit_24" />
 
                 <View
                     android:id="@+id/view5"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="#402196F3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/address"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/view5" />
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:padding="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView29"
-                    app:srcCompat="@drawable/location" />
+                    android:background="#400A4776"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView20" />
 
                 <TextView
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/address"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/imageView20"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+
+                <ImageView
+                    android:id="@+id/imageView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/address_icon_description"
+                    app:layout_constraintStart_toStartOf="@+id/imageView20"
+                    app:layout_constraintTop_toBottomOf="@+id/textView30"
+                    app:srcCompat="@drawable/location" />
+
+                <EditText
+                    android:id="@+id/OrderRecepEmail"
+                    android:layout_width="240dp"
+                    android:layout_height="42dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/pvt_address"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                    app:layout_constraintStart_toEndOf="@+id/imageView7"
-                    app:layout_constraintTop_toTopOf="@+id/imageView7" />
+                    android:autofillHints="postalAddress"
+                    android:inputType="textPostalAddress"
+                    android:background="@drawable/no_underline_edittext"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+                    app:layout_constraintStart_toEndOf="@+id/imageView22"
+                    app:layout_constraintTop_toTopOf="@+id/imageView22" />
 
                 <ImageView
-                    android:id="@+id/imageView8"
+                    android:id="@+id/imageView23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView30"
+                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecepEmail"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView30"
+                    app:layout_constraintTop_toTopOf="@+id/OrderRecepEmail"
                     app:srcCompat="@drawable/baseline_edit_24" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -416,7 +485,7 @@
                 android:layout_marginBottom="0dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button2"
+                    android:id="@+id/checkout_btn"
                     style="@android:style/Widget.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

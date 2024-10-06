@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ecommerce_mobile_app.Model.BrandModel
+import com.example.ecommerce_mobile_app.Model.ItemModel
 import com.example.ecommerce_mobile_app.Model.SliderModel
 import com.example.ecommerce_mobile_app.ProductListsItem
 import com.example.ecommerce_mobile_app.RetrofitClient
@@ -31,6 +31,10 @@ class MainViewModel():ViewModel() {
 
     private val _category = MutableLiveData<List<ProductListsItem>>()
     val category : LiveData<List<ProductListsItem>> = _category
+
+    private val _popularProducts = MutableLiveData<List<ItemModel>>()
+    val popProducts : LiveData<List<ItemModel>> = _popularProducts
+
 
     fun loadBanners(){
         val Ref = firebaseDatabase.getReference("Banner")
@@ -82,6 +86,46 @@ class MainViewModel():ViewModel() {
 
                 // Set an empty list in case of failure
                 _category.value = emptyList()
+            }
+        }
+    }
+
+    fun loadPopular() {
+
+        /*viewModelScope.launch {
+            try {
+                // Fetch the product list from the API
+                val popProductList = RetrofitClient.apiService.getPopProductList()
+
+                // Update LiveData with the product list
+                _popularProducts.value = popProductList.toMutableList() // Keep it as MutableList<ProductListItem>
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+                // Set an empty list in case of failure
+                _popularProducts.value = emptyList()
+            }
+        }*/
+
+        viewModelScope.launch {
+            try {
+                // Fetch the product list from the API
+                val popProductList = RetrofitClient.apiService.getPopProductList()
+
+                // Randomly select 4 products
+                val randomPopularProducts = if (popProductList.size > 4) {
+                    popProductList.shuffled().take(4)
+                } else {
+                    popProductList // If the list has less than or equal to 4 items, return the entire list
+                }
+
+                // Update LiveData with the randomly selected products
+                _popularProducts.value = randomPopularProducts.toMutableList()
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+                // Set an empty list in case of failure
+                _popularProducts.value = emptyList()
             }
         }
     }

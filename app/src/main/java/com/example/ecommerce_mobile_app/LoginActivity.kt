@@ -7,21 +7,36 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ecommerce_mobile_app.Model.UserLoginModel
 import com.example.ecommerce_mobile_app.databinding.ActivityLoginBinding
+import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var emailInput: EditText
+    private lateinit var passwordInput: EditText
+    private lateinit var signinButton: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //setContentView(binding.root)
 
         val registerTextView: TextView = findViewById(R.id.register_txt)
 
@@ -57,6 +72,68 @@ class LoginActivity : AppCompatActivity() {
         binding.signinbtn.setOnClickListener {
             val intent = Intent(this@LoginActivity, ProductLActivity::class.java)
             startActivity(intent)
+        }
+
+        // Initialize the views
+        emailInput = findViewById(R.id.email_input)
+        passwordInput = findViewById(R.id.pwd_input)
+        signinButton = findViewById(R.id.signinbtn)
+
+        // Set the click listener for the sign-in button
+        signinButton.setOnClickListener {
+            val email = emailInput.text.toString()
+            val password = passwordInput.text.toString()
+
+            if (validateInputs(email, password)) {
+                loginUser(UserLoginModel(email, password))
+            }
+        }
+
+    }
+
+    private fun validateInputs(email: String, password: String): Boolean {
+        // Simple validation for email and password
+        return when {
+            email.isEmpty() -> {
+                Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_SHORT).show()
+                false
+            }
+            password.isEmpty() -> {
+                Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> true
+        }
+    }
+
+    private fun loginUser(userLogin: UserLoginModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Make the API call to login the user
+                val response: LoginResponseModel = RetrofitClient.apiService.loginUser(userLogin)
+
+                // Handle the response in the main thread
+                withContext(Dispatchers.Main) {
+                    // Save token and user data, and navigate to the next screen
+                    val token = response.token
+                    val user = response.user // This will have all fields defined in LoginUserModel
+
+                    // Optionally save token in shared preferences or navigate to another activity
+                    // For example, navigating to a ProductActivity
+                    Toast.makeText(this@LoginActivity, response.message, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@LoginActivity, ProductLActivity::class.java).apply {
+                        putExtra("FIRST_NAME", user.first_Name) // Assuming user has firstName property
+                        putExtra("LAST_NAME", user.last_Name)   // Assuming user has lastName property
+                    }
+                    startActivity(intent)
+                    finish() // Close the LoginActivity
+                }
+            } catch (e: Exception) {
+                // Handle any errors during login
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LoginActivity, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }

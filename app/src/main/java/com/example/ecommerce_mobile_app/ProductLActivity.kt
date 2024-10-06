@@ -7,24 +7,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.ecommerce_mobile_app.Adapter.BrandAdapter
+import com.example.ecommerce_mobile_app.Adapter.PopProductAdapter
 import com.example.ecommerce_mobile_app.Adapter.SliderAdapter
 import com.example.ecommerce_mobile_app.Model.BrandModel
 import com.example.ecommerce_mobile_app.Model.SliderModel
+import com.example.ecommerce_mobile_app.Model.UserModel
 import com.example.ecommerce_mobile_app.ViewModel.MainViewModel
 import com.example.ecommerce_mobile_app.databinding.ActivityProductLactivityBinding
 
-//const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-//const val BASE_URL = "https://10.0.2.2:44305/api/"
-//const val BASE_URL = "https://interview.supershinecarcare.lk/api/"
+
 class ProductLActivity : AppCompatActivity() {
 
     private val viewModel = MainViewModel()
             private lateinit var binding: ActivityProductLactivityBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +35,18 @@ class ProductLActivity : AppCompatActivity() {
         binding = ActivityProductLactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Retrieve the first name and last name from the Intent
+        val firstName = intent.getStringExtra("FIRST_NAME")
+        val lastName = intent.getStringExtra("LAST_NAME")
+
+        // Set the text in the TextView
+        binding.textView34.text = getString(R.string.name_here, firstName, lastName)
+
         initBanner()
 
         initCategory()
+
+        initPopProduct()
 
         //getProductList()
     }
@@ -121,33 +132,7 @@ class ProductLActivity : AppCompatActivity() {
         viewModel.loadCateogry()
     }*/
 
-    /*private fun getProductList() {
-        val api = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(ApiService::class.java)
 
-        api.getProductList().enqueue(object :Callback<List<BrandModel>>{
-            override fun onResponse(
-                call: Call<List<BrandModel>>,
-                response: Response<List<BrandModel>>
-            ) {
-                if (response.isSuccessful){
-                    response.body()?.let {
-                        for (category in it) {
-                            Log.i(TAG, "onResponse: ${category.name}")
-                        }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<BrandModel>>, t: Throwable) {
-                Log.i(TAG, "onFailure: ${t.message}")
-            }
-
-        })
-    }*/
 
     private fun initCategory() {
         /*binding.progressBarCateg.visibility = View.VISIBLE
@@ -170,6 +155,30 @@ class ProductLActivity : AppCompatActivity() {
 
         binding.progressBarCateg.visibility = View.GONE
         viewModel.loadCategory()
+
+    }
+
+    private fun initPopProduct() {
+        /*binding.progressBarCateg.visibility = View.VISIBLE
+
+
+        // Observe the categories data from the ViewModel
+        viewModel.categories.observe(this, Observer { categoryData ->
+            // Set the data on textView35 (category name)
+            binding.textView35.text = categoryData.toString()
+            binding.progressBarCateg.visibility = View.GONE
+        })
+
+        // Fetch the categories (API call)
+        viewModel.loadCategory() // You need to implement this function in your ViewModel*/
+        binding.viewPopular.layoutManager = GridLayoutManager(this@ProductLActivity, 2)
+
+        viewModel.popProducts.observe(this) { popProductList ->
+            binding.viewPopular.adapter = PopProductAdapter(popProductList.toMutableList())
+        }
+
+        binding.progressBarProduct.visibility = View.GONE
+        viewModel.loadPopular()
     }
 
 

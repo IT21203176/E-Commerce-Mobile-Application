@@ -1,11 +1,14 @@
 package com.example.ecommerce_mobile_app.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.ecommerce_mobile_app.CategoryProductActivity
+import com.example.ecommerce_mobile_app.Model.ItemModel
 import com.example.ecommerce_mobile_app.ProductListsItem
 import com.example.ecommerce_mobile_app.R
 import com.example.ecommerce_mobile_app.databinding.ViewholderBrandBinding
@@ -56,11 +59,21 @@ class BrandAdapter (private val items: List<ProductListsItem>) : RecyclerView.Ad
             notifyItemChanged(selectedPosition)
         }*/
 
-        holder.binding.root.setOnClickListener {
+        holder.binding.viewholderBrandTitle.setOnClickListener {
             lastSelectedPosition = selectedPosition
             selectedPosition = position
             notifyItemChanged(lastSelectedPosition)
             notifyItemChanged(selectedPosition)
+
+            // Navigate to CategoryProductActivity
+            val intent = Intent(holder.itemView.context, CategoryProductActivity::class.java)
+
+            // Pass the category name or product-related data to the CategoryProductActivity
+            intent.putExtra("category_name", item.name) // Assuming product has a categoryName
+            holder.itemView.context.startActivity(intent)
+
+
+
         }
 
         holder.binding.viewholderBrandTitle.setTextColor(context.resources.getColor(R.color.black))
