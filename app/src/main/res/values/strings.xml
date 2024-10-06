@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ECommerce_Mobile_App</string>
-    <string name="shop_cart">SHOP CART</string>
+    <string name="shop_cart">Trendify</string>
+    <string name="online_market"><font color="#2a3577">Online</font><font color="#FF5722"> Market</font></string>
     <string name="my_cart">My Cart</string>
     <string name="cart_empty_view_text">Your Cart is Empty</string>
     <string name="checkout">Checkout</string>
@@ -16,7 +17,7 @@
     <string name="total">Total</string>
     <string name="title_cart_view_holder">Title</string>
     <string name="title_brand_view_holder">Title</string>
-    <string name="intro_title"> Discover Your Next\n<font color="#2a3577">Favorite Find!</font></string>
+    <string name="intro_title"> <font color="#2a3577">Discover Your Next\n</font><font color="#FF5722">Favorite Find!</font></string>
     <string name="sub_title"><font color="#2a3577">Shop the latest trends,unique products, and unbeatable deals all at your fingertips!</font></string>
     <string name="product_info"><font color="#000000">Shop the latest trends,unique products, and unbeatable deals all at your fingertips.Shop the latest trends,unique!Shop the latest trends,unique products, and unbeatable deals all at your fingertips.</font></string>
     <string name="contact_info">Contact Information</string>
@@ -47,7 +48,7 @@
     <string name="nic">NIC Number</string>
     <string name="sign_in_choice">Already have an account? <b>Sign In</b></string>
     <string name="w_back">Welcome Back!</string>
-    <string name="name_here">Name_Here</string>
+    <string name="name_here">%1$s %2$s</string>
     <string name="categ">Categories</string>
     <string name="see_all">See All</string>
     <string name="pop">Popular Products</string>
@@ -81,5 +82,6 @@
     <string name="google_icon_description">Google Image</string>
     <string name="email_description">Email input field</string>
     <string name="payment_success_description">Payment Success</string>
+    <string name="main_logo_description">Logo Description</string>
 
 </resources>
