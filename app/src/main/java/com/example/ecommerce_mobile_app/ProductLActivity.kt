@@ -1,5 +1,6 @@
 package com.example.ecommerce_mobile_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -29,7 +30,7 @@ class ProductLActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_lactivity)
+        //setContentView(R.layout.activity_product_lactivity)
 
         binding = ActivityProductLactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -40,6 +41,11 @@ class ProductLActivity : AppCompatActivity() {
 
         // Set the text in the TextView
         binding.textView34.text = getString(R.string.name_here, firstName, lastName)
+
+        binding.profileIcon.setOnClickListener {
+            val intent = Intent(this@ProductLActivity, CustomerEditProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         initBanner()
 

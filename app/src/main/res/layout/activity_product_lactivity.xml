@@ -257,8 +257,8 @@
 
                     <ImageView
                         android:id="@+id/home_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/home1"/>
@@ -267,7 +267,7 @@
                         android:id="@+id/textView375"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/poppins"
                         android:text="@string/home"
                         android:textAlignment="center"
@@ -284,8 +284,8 @@
 
                     <ImageView
                         android:id="@+id/whishlist_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/favourite1" />
@@ -294,7 +294,7 @@
                         android:id="@+id/textView374"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/poppins"
                         android:text="@string/wishlist"
                         android:textAlignment="center"
@@ -311,8 +311,8 @@
 
                     <ImageView
                         android:id="@+id/order_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/cart1" />
@@ -321,7 +321,7 @@
                         android:id="@+id/textView373"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/poppins"
                         android:text="@string/order"
                         android:textAlignment="center"
@@ -338,8 +338,8 @@
 
                     <ImageView
                         android:id="@+id/cart_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/shoppingcart1" />
@@ -348,7 +348,7 @@
                         android:id="@+id/textView372"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/poppins"
                         android:text="@string/cart"
                         android:textAlignment="center"
@@ -365,8 +365,8 @@
 
                     <ImageView
                         android:id="@+id/profile_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/profile1" />
@@ -375,7 +375,7 @@
                         android:id="@+id/textView371"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/poppins"
                         android:text="@string/profile"
                         android:textAlignment="center"

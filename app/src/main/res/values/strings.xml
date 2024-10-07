@@ -57,8 +57,12 @@
     <string name="order">My Order</string>
     <string name="cart">Cart</string>
     <string name="name">Name</string>
+    <string name="first_name">Janithya</string>
+    <string name="last_name">Dias</string>
+    <string name="nic_no">NIC No.</string>
     <string name="r_name">Janithya Dias</string>
     <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="pay_success">Your Payment is Successful.</string>
     <string name="backToShop">Back to Shopping</string>
     <string name="stockStatus">In Stock</string>
@@ -66,6 +70,8 @@
     <string name="descrip">Description</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="buy_now">Buy Now</string>
+    <string name="deactivate">Account Deactivation</string>
+    <string name="deactivate_note">Ensuring that the user understand the\n consequences of deactivating their account (<b><i>loss of data, subscription, etc.</i></b>)</string>
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
@@ -80,6 +86,7 @@
     <string name="login_icon_description">Logo Image</string>
     <string name="fb_icon_description">Fb Image</string>
     <string name="google_icon_description">Google Image</string>
+    <string name="logout_icon_description">Logout Button</string>
     <string name="email_description">Email input field</string>
     <string name="payment_success_description">Payment Success</string>
     <string name="main_logo_description">Logo Description</string>

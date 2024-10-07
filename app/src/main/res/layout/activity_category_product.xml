@@ -29,6 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:padding="8dp"
+                    android:contentDescription="@string/back_button_description"
                     android:background="@drawable/grey_bg_circle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
