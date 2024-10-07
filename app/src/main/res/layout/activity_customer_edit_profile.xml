@@ -119,14 +119,16 @@
                     android:textColor="@color/black"/>
 
                 <EditText
-                    android:id="@+id/editFNameTxt"
+                    android:id="@+id/fNameTxt"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="text"
                     android:textSize="14sp"
+                    android:inputType="textPersonName"
+                    android:autofillHints="name"
                     android:fontFamily="@font/poppins"
                     android:text="@string/first_name"
-                    android:autofillHints="name"
+                    android:hint="@string/f_name"
+                    android:labelFor="@id/textView19"
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
@@ -140,15 +142,17 @@
                     android:textColor="@color/black"/>
 
                 <EditText
-                    android:id="@+id/editLNameTxt"
+                    android:id="@+id/lNameTxt"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="text"
                     android:text="@string/last_name"
                     android:textSize="14sp"
-                    android:autofillHints="name"
                     android:fontFamily="@font/poppins"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="8dp"
+                    android:inputType="textPersonName"
+                    android:autofillHints="name"
+                    android:hint="@string/l_name"
+                    android:labelFor="@id/textView21"/>
 
                 <TextView
                     android:id="@+id/textView25"
@@ -161,15 +165,17 @@
                     android:textColor="@color/black"/>
 
                 <EditText
-                    android:id="@+id/editNICNoTxt"
+                    android:id="@+id/nICNoTxt"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="text"
                     android:text="@string/nic_no"
                     android:textSize="14sp"
-                    android:autofillHints="name"
                     android:fontFamily="@font/poppins"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="8dp"
+                    android:inputType="text"
+                    android:autofillHints="name"
+                    android:hint="@string/nic"
+                    android:labelFor="@id/textView25"/>
 
                 <TextView
                     android:id="@+id/textView27"
@@ -182,15 +188,17 @@
                     android:textColor="@color/black"/>
 
                 <EditText
-                    android:id="@+id/editTextTextPostalAddress"
+                    android:id="@+id/postalAddressTxt"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="textPostalAddress"
                     android:text="@string/pvt_address"
                     android:textSize="14sp"
-                    android:autofillHints="name"
                     android:fontFamily="@font/poppins"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="8dp"
+                    android:inputType="textPostalAddress"
+                    android:autofillHints="postalAddress"
+                    android:hint="@string/address"
+                    android:labelFor="@id/textView27"/>
 
                 <TextView
                     android:id="@+id/textView29"
@@ -203,40 +211,20 @@
                     android:textColor="@color/black"/>
 
                 <EditText
-                    android:id="@+id/editTextTextEmailAddress"
+                    android:id="@+id/emailAddressTxt"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="textEmailAddress"
                     android:text="@string/pvt_email"
                     android:textSize="14sp"
-                    android:autofillHints="name"
-                    android:fontFamily="@font/poppins"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:id="@+id/textView35"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pwd"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <EditText
-                    android:id="@+id/editTextTextPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:inputType="textPassword"
-                    android:text="@string/first_name"
-                    android:textSize="14sp"
-                    android:autofillHints="name"
                     android:fontFamily="@font/poppins"
                     android:layout_marginBottom="8dp"
-                    android:drawableEnd="@drawable/password_icon"/>
+                    android:inputType="textEmailAddress"
+                    android:autofillHints="emailAddress"
+                    android:hint="@string/nic"
+                    android:labelFor="@id/textView29"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/editUserProfileBtn"
+                    android:id="@+id/editProfileDetailsBtn"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:background="@drawable/dark_moderate_blue_bg"
@@ -244,7 +232,9 @@
                     android:text="@string/edit_profile"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:layout_marginTop="20dp"/>
 
 
             </LinearLayout>
@@ -287,7 +277,7 @@
                     android:layout_height="60dp"
                     android:background="@drawable/dark_moderate_blue_bg"
                     android:fontFamily="@font/poppins"
-                    android:text="@string/edit_profile"
+                    android:text="@string/deactivate"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />

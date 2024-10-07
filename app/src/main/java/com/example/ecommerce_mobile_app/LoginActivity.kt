@@ -106,7 +106,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun loginUser(userLogin: UserLoginModel) {
+    /*private fun loginUser(userLogin: UserLoginModel) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 // Make the API call to login the user
@@ -122,8 +122,12 @@ class LoginActivity : AppCompatActivity() {
                     // For example, navigating to a ProductActivity
                     Toast.makeText(this@LoginActivity, response.message, Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginActivity, ProductLActivity::class.java).apply {
+                        putExtra("USER_ID", user.id)
                         putExtra("FIRST_NAME", user.first_Name) // Assuming user has firstName property
                         putExtra("LAST_NAME", user.last_Name)   // Assuming user has lastName property
+                        putExtra("EMAIL", user.email)
+                        putExtra("NIC", user.nic)
+                        putExtra("ADDRESS", user.address)
                     }
                     startActivity(intent)
                     finish() // Close the LoginActivity
@@ -135,5 +139,58 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }*/
+
+    private fun loginUser(userLogin: UserLoginModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Call the suspend function
+                val response: LoginResponseModel = RetrofitClient.apiService.loginUser(userLogin)
+
+                // Handle the response in the main thread
+                withContext(Dispatchers.Main) {
+                    // Save token and user data in SharedPreferences
+                    val sharedPref = getSharedPreferences("user_session", MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("token", response.token) // Save the token
+                    editor.putString("userId", response.user.id) // Save the user ID
+                    editor.apply() // Save changes
+
+                    // Log the saved user ID
+                    Log.d("LoginActivity", "User ID saved: ${response.user.id}")
+
+                    // Show a success message
+                    Toast.makeText(this@LoginActivity, response.message, Toast.LENGTH_SHORT).show()
+
+                    // Prepare intent for the next activity
+                    val intent = Intent(this@LoginActivity, ProductLActivity::class.java).apply {
+                        putExtra("USER_ID", response.user.id)
+                        putExtra("FIRST_NAME", response.user.first_Name) // Assuming user has first_Name property
+                        putExtra("LAST_NAME", response.user.last_Name)   // Assuming user has last_Name property
+                        putExtra("EMAIL", response.user.email)
+                        putExtra("NIC", response.user.nic)
+                        putExtra("ADDRESS", response.user.address)
+                    }
+                    //startActivity(intent)
+                    //finish() // Close the LoginActivity
+                    // Check if user ID and token are not null or empty
+                    if (!response.user.id.isNullOrEmpty() && !response.token.isNullOrEmpty()) {
+                        startActivity(intent)
+                        finish() // Close the LoginActivity
+                    } else {
+                        Toast.makeText(this@LoginActivity, "User ID or token not found", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                // Handle any errors during login
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LoginActivity, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
+
+
+
+
 }
