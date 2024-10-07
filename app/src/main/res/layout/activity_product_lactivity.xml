@@ -257,8 +257,8 @@
 
                     <ImageView
                         android:id="@+id/home_icon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/home1"/>
@@ -284,8 +284,8 @@
 
                     <ImageView
                         android:id="@+id/whishlist_icon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/favourite1" />
@@ -311,8 +311,8 @@
 
                     <ImageView
                         android:id="@+id/order_icon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/cart1" />
@@ -338,8 +338,8 @@
 
                     <ImageView
                         android:id="@+id/cart_icon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/shoppingcart1" />
@@ -365,8 +365,8 @@
 
                     <ImageView
                         android:id="@+id/profile_icon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         app:srcCompat="@drawable/profile1" />
