@@ -19,6 +19,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.ecommerce_mobile_app.Model.ItemModel
 import com.example.ecommerce_mobile_app.databinding.ActivityDetailBinding
 import com.example.ecommerce_mobile_app.databinding.ActivityProductLactivityBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
 class DetailActivity : AppCompatActivity() {
@@ -39,6 +42,7 @@ class DetailActivity : AppCompatActivity() {
         val decimalFormat = DecimalFormat("#,###.00")
         findViewById<TextView>(R.id.productPriceTxt).text = "LKR. ${decimalFormat.format(product.price)}"
         findViewById<TextView>(R.id.descriptionTxt).text = product.description
+        findViewById<TextView>(R.id.vendorNameToRate).text = "Click on the Star to Rate ${product.productVendorName}"
 
         val stockStatusTxt = findViewById<TextView>(R.id.stockStatusTxt)
         val stockStatusDot = findViewById<View>(R.id.stockStatusDot)
@@ -82,6 +86,23 @@ class DetailActivity : AppCompatActivity() {
             val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)
         }
+
+        val rateStar = findViewById<View>(R.id.rateStar)
+        rateStar.setOnClickListener {
+            val intent = Intent(this@DetailActivity, RateVendorActivity::class.java) // Make sure RateActivity exists
+            intent.putExtra("productVendorName", product.productVendorName)
+            intent.putExtra("productId", product.id) // If you want to pass the product ID
+            startActivity(intent)
+        }
+
+        /*CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val vendor = getVendorDetails(product.product_idVendor)
+                binding.vendorNameToRate.text = vendor.name
+            } catch (e: Exception) {
+                Toast.makeText(this@DetailActivity, "Error loading vendor details", Toast.LENGTH_SHORT).show()
+            }
+        }*/
     }
 
 

@@ -154,10 +154,13 @@ class LoginActivity : AppCompatActivity() {
                     val editor = sharedPref.edit()
                     editor.putString("token", response.token) // Save the token
                     editor.putString("userId", response.user.id) // Save the user ID
+                    editor.putString("firstName", response.user.first_Name)
                     editor.apply() // Save changes
 
                     // Log the saved user ID
+                    Log.d("LoginActivity", "Saved token: ${response.token}")
                     Log.d("LoginActivity", "User ID saved: ${response.user.id}")
+                    Log.d("LoginActivity", "Saved firstName: ${response.user.first_Name}")
 
                     // Show a success message
                     Toast.makeText(this@LoginActivity, response.message, Toast.LENGTH_SHORT).show()
