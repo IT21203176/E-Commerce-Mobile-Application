@@ -12,6 +12,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ecommerce_mobile_app.databinding.ActivityCheckoutBinding
+import java.text.DecimalFormat
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -26,8 +27,26 @@ class CheckoutActivity : AppCompatActivity() {
 
         val checkoutBtn : Button = findViewById(R.id.checkout_btn)
 
+        // Retrieve the data from the Intent
+        val subTotal = intent.getDoubleExtra("SUB_TOTAL", 0.0)
+        val deliveryFee = intent.getDoubleExtra("DELIVERY_FEE", 0.0)
+        val tax = intent.getDoubleExtra("TAX", 0.0)
+        val total = intent.getDoubleExtra("TOTAL", 0.0)
+
+        // Format the values to display
+        val decimalFormat = DecimalFormat("#,###.00")
+        binding.subTotAmountTxt.text = "LKR. ${decimalFormat.format(subTotal)}"
+        binding.DeliveryAmountTxt.text = "LKR. ${decimalFormat.format(deliveryFee)}"
+        binding.TaxAmountTxt.text = "LKR. ${decimalFormat.format(tax)}"
+        binding.TotalAmountTxt.text = "LKR. ${decimalFormat.format(total)}"
+
+
         checkoutBtn.setOnClickListener {
             showPaymentSuccessPopupBox()
+        }
+
+        binding.backBtn1.setOnClickListener {
+            onBackPressed() // Navigate back to the previous activity
         }
     }
 

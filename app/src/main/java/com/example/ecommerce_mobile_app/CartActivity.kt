@@ -1,5 +1,6 @@
 package com.example.ecommerce_mobile_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -31,10 +32,28 @@ class CartActivity : AppCompatActivity() {
         setupRecyclerView()
         fetchCartItems()
 
-        binding.checkoutBtn.setOnClickListener {
+        /*binding.checkoutBtn.setOnClickListener {
             // Handle checkout button click
             if (selectedItems.isNotEmpty()) {
                 Toast.makeText(this, "Proceeding to Checkout", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "No items in the cart", Toast.LENGTH_SHORT).show()
+            }
+        }*/
+
+        binding.checkoutBtn.setOnClickListener {
+            // Handle checkout button click
+            if (selectedItems.isNotEmpty()) {
+                // Navigate to CheckoutActivity
+                val intent = Intent(this, CheckoutActivity::class.java)
+
+                // Pass the cart details as extras
+                intent.putExtra("SUB_TOTAL", calculateSubtotal())
+                intent.putExtra("DELIVERY_FEE", 300.0) // Example delivery fee
+                intent.putExtra("TAX", calculateTax())
+                intent.putExtra("TOTAL", calculateTotal())
+
+                startActivity(intent) // Start the CheckoutActivity
             } else {
                 Toast.makeText(this, "No items in the cart", Toast.LENGTH_SHORT).show()
             }
@@ -93,7 +112,7 @@ class CartActivity : AppCompatActivity() {
         binding.viewCart.adapter = cartAdapter
     }
 
-    private fun calculateCartTotal() {
+    /*private fun calculateCartTotal() {
         /*var subtotal = 0
         for (item in selectedItems) {
             subtotal += item.price
@@ -115,6 +134,40 @@ class CartActivity : AppCompatActivity() {
         binding.deliveryFeeTxt.text = "LKR. ${decimalFormat.format(deliveryFee)}"
         binding.taxTxt.text = "LKR. ${decimalFormat.format(tax)}"
         binding.TotalTxt.text = "LKR. ${decimalFormat.format(total)}"
+    }*/
+
+    private fun calculateCartTotal() {
+        var subTotal = calculateSubtotal()
+        val deliveryFee = 300.0 // Example delivery fee
+        val tax = calculateTax()
+        val total = subTotal + deliveryFee + tax
+
+        val decimalFormat = DecimalFormat("#,###.00")
+        binding.totalFeeTxt.text = "LKR. ${decimalFormat.format(subTotal)}"
+        binding.deliveryFeeTxt.text = "LKR. ${decimalFormat.format(deliveryFee)}"
+        binding.taxTxt.text = "LKR. ${decimalFormat.format(tax)}"
+        binding.TotalTxt.text = "LKR. ${decimalFormat.format(total)}"
+    }
+
+    private fun calculateSubtotal(): Double {
+        var subTotal = 0.0
+        for (item in cartAdapter.listItemSelected) {
+            val quantity = cartAdapter.getQuantityForItem(item) // Get quantity for the item
+            subTotal += item.price * quantity
+        }
+        return subTotal
+    }
+
+    private fun calculateTax(): Double {
+        val subTotal = calculateSubtotal()
+        return (subTotal * 0.05) // Example tax (5%)
+    }
+
+    private fun calculateTotal(): Double {
+        val subTotal = calculateSubtotal()
+        val deliveryFee = 300.0 // Example delivery fee
+        val tax = calculateTax()
+        return subTotal + deliveryFee + tax
     }
 
 

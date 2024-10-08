@@ -70,6 +70,8 @@
     <string name="descrip">Description</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="buy_now">Buy Now</string>
+    <string name="vendor_detail">Vendor Name</string>
+    <string name="vendor_n">Janu D</string>
     <string name="deactivate">Account Deactivation</string>
     <string name="deactivate_note">Ensuring that the user understand the\n consequences of deactivating their account (<b><i>loss of data, subscription, etc.</i></b>)</string>
 
@@ -97,5 +99,8 @@
     <string name="rate_now">Rate Now</string>
     <string name="profile_details">Profile</string>
     <string name="comments">Comments</string>
+    <string name="rate_image">Rate Image</string>
+    <string name="rate_title">Rate Me</string>
+    <string name="rate_description">If you enjoyed purchasing from our store, would you mind rating your experience with us? Your feedback helps us improve and continue providing the best service possible.</string>
 
 </resources>

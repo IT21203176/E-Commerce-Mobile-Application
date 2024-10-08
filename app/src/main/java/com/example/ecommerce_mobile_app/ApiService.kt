@@ -1,7 +1,10 @@
 package com.example.ecommerce_mobile_app
 
+import com.example.ecommerce_mobile_app.Model.Comments
 import com.example.ecommerce_mobile_app.Model.CustomerModel
 import com.example.ecommerce_mobile_app.Model.ItemModel
+import com.example.ecommerce_mobile_app.Model.OrderModel
+import com.example.ecommerce_mobile_app.Model.RankingComments
 import com.example.ecommerce_mobile_app.Model.UserLoginModel
 import com.example.ecommerce_mobile_app.Model.UserModel
 import okhttp3.ResponseBody
@@ -38,6 +41,15 @@ interface ApiService {
 
     /*@PUT("Users/update/{id}")
     suspend fun updateUserDetails(@Path("id") userId: String, @Header("Authorization") token: String, @Body user: UserModel): Response<ResponseBody>*/
+
+    @POST("Orders")
+    suspend fun createOrder(@Body order: OrderModel): Response<ResponseBody>
+
+    @POST("RankingComments")
+    suspend fun postRanking(@Body rankingComments: RankingComments): Response<RankingComments>
+
+    @POST("RankingComments/addComment")
+    suspend fun postComment(@Body comments: Comments): Response<Comments>
 
 }
 
