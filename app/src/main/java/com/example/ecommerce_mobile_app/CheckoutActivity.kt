@@ -105,7 +105,7 @@ class CheckoutActivity : AppCompatActivity() {
                     vendorId = item.product_idVendor,
                     unitPrice = item.price.toDouble(),
                     quantity = quantity,
-                    total = item.price * quantity.toDouble(),
+                    total = item.price * quantity.toDouble() ,
                     isDelivered = false
                 )
             }
