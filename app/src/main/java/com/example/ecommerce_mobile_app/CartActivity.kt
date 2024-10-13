@@ -21,6 +21,11 @@ class CartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCartBinding
     private lateinit var cartAdapter: CartAdapter
     private val selectedItems = ArrayList<ItemModel>()
+    private lateinit var cartItems: ArrayList<ItemModel>
+
+    companion object {
+        const val DELIVERY_FEE = 300.0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +36,10 @@ class CartActivity : AppCompatActivity() {
 
         setupRecyclerView()
         fetchCartItems()
-
-        /*binding.checkoutBtn.setOnClickListener {
-            // Handle checkout button click
-            if (selectedItems.isNotEmpty()) {
-                Toast.makeText(this, "Proceeding to Checkout", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No items in the cart", Toast.LENGTH_SHORT).show()
-            }
-        }*/
+        cartItems = getCartItems()
 
         binding.checkoutBtn.setOnClickListener {
+            // Handle checkout button click
             // Handle checkout button click
             if (selectedItems.isNotEmpty()) {
                 // Navigate to CheckoutActivity
@@ -49,9 +47,11 @@ class CartActivity : AppCompatActivity() {
 
                 // Pass the cart details as extras
                 intent.putExtra("SUB_TOTAL", calculateSubtotal())
-                intent.putExtra("DELIVERY_FEE", 300.0) // Example delivery fee
+                intent.putExtra("DELIVERY_FEE", DELIVERY_FEE)
                 intent.putExtra("TAX", calculateTax())
                 intent.putExtra("TOTAL", calculateTotal())
+                // Pass the cart items
+                intent.putExtra("CART_ITEMS", selectedItems)
 
                 startActivity(intent) // Start the CheckoutActivity
             } else {
@@ -112,7 +112,7 @@ class CartActivity : AppCompatActivity() {
         binding.viewCart.adapter = cartAdapter
     }
 
-    /*private fun calculateCartTotal() {
+    private fun calculateCartTotal() {
         /*var subtotal = 0
         for (item in selectedItems) {
             subtotal += item.price
@@ -125,21 +125,8 @@ class CartActivity : AppCompatActivity() {
             subTotal += item.price * quantity
         }
 
-        val deliveryFee = 300 // Example delivery fee
-        val tax = (subTotal * 0.05).toInt() // Example tax (5%)
-        val total = subTotal + deliveryFee + tax
-
-        val decimalFormat = DecimalFormat("#,###.00")
-        binding.totalFeeTxt.text = "LKR. ${decimalFormat.format(subTotal)}"
-        binding.deliveryFeeTxt.text = "LKR. ${decimalFormat.format(deliveryFee)}"
-        binding.taxTxt.text = "LKR. ${decimalFormat.format(tax)}"
-        binding.TotalTxt.text = "LKR. ${decimalFormat.format(total)}"
-    }*/
-
-    private fun calculateCartTotal() {
-        var subTotal = calculateSubtotal()
-        val deliveryFee = 300.0 // Example delivery fee
-        val tax = calculateTax()
+        val deliveryFee = 300
+        val tax = (subTotal * 0.05).toInt()
         val total = subTotal + deliveryFee + tax
 
         val decimalFormat = DecimalFormat("#,###.00")
@@ -170,5 +157,9 @@ class CartActivity : AppCompatActivity() {
         return subTotal + deliveryFee + tax
     }
 
+    private fun getCartItems(): ArrayList<ItemModel> {
+        // This should be replaced by the actual logic to fetch the selected items in the cart
+        return ArrayList()
+    }
 
 }

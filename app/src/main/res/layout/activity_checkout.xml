@@ -37,9 +37,34 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/checkout"
+                    android:fontFamily="@font/poppins"
                     android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/checkout_cart"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="18sp"
+                android:layout_margin="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/view_order_cart_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
 
             <TextView
@@ -48,17 +73,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/order_summary"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:padding="16dp"/>
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="18sp"
+                android:layout_margin="16dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+                android:padding="16dp"
                 android:background="@drawable/light_blue_bg">
 
                 <TextView
@@ -66,10 +90,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/sub_total"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,24 +102,25 @@
                     android:id="@+id/subTotAmountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/minus"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/textView14" />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/delivery_fee"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView14"
                     app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                 <TextView
@@ -102,9 +128,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/minus"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView16"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView16" />
@@ -113,12 +140,12 @@
                     android:id="@+id/textView18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/tax_fee"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView16"
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <TextView
@@ -126,9 +153,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/minus"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView18"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -150,11 +178,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/total"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
+                    android:layout_marginBottom="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView18"
                     app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -164,10 +193,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="@string/minus"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView20" />
@@ -177,20 +205,19 @@
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:text="@string/contact_info"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="18sp"
+                android:layout_margin="16dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="290dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
+                android:layout_height="455dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/light_blue_bg"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -199,9 +226,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/name"
-                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -217,15 +247,14 @@
 
                 <EditText
                     android:id="@+id/OrderRecepName"
-                    android:layout_width="240dp"
+                    android:layout_width="200dp"
                     android:layout_height="42dp"
-                    android:text="@string/r_name"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
                     android:autofillHints="name"
+                    android:fontFamily="@font/poppins"
                     android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
                     android:background="@drawable/no_underline_edittext"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView15"
                     app:layout_constraintStart_toEndOf="@+id/imageView15"
@@ -259,8 +288,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/email"
-                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/imageView15"
                     app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
@@ -275,17 +307,16 @@
                     app:srcCompat="@drawable/mail" />
 
                 <EditText
-                    android:id="@+id/OrderRecepAddress"
-                    android:layout_width="240dp"
+                    android:id="@+id/OrderRecep_Email"
+                    android:layout_width="200dp"
                     android:layout_height="42dp"
                     android:layout_marginStart="16dp"
-                    android:text="@string/pvt_email"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/no_underline_edittext"
                     android:autofillHints="name"
-                    android:inputType="text"
+                    android:background="@drawable/no_underline_edittext"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView17"
                     app:layout_constraintStart_toEndOf="@+id/imageView17"
                     app:layout_constraintTop_toTopOf="@+id/imageView17"/>
@@ -294,9 +325,9 @@
                     android:id="@+id/imageView18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecepAddress"
+                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecep_Email"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/OrderRecepAddress"
+                    app:layout_constraintTop_toTopOf="@+id/OrderRecep_Email"
                     app:srcCompat="@drawable/baseline_edit_24"
                     android:layout_marginEnd="16dp"
                     android:contentDescription="@string/edit_icon_description"/>
@@ -318,8 +349,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/phone"
-                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/imageView17"
                     app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
@@ -335,16 +369,14 @@
 
                 <EditText
                     android:id="@+id/OrderRecepMobile"
-                    android:layout_width="240dp"
+                    android:layout_width="200dp"
                     android:layout_height="42dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/pvt_phone"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
                     android:autofillHints="phone"
+                    android:fontFamily="@font/poppins"
                     android:inputType="phone"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
                     android:background="@drawable/no_underline_edittext"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView20"
                     app:layout_constraintStart_toEndOf="@+id/imageView20"
@@ -377,8 +409,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/address"
-                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/imageView20"
                     app:layout_constraintTop_toBottomOf="@+id/imageView20" />
 
@@ -393,14 +428,13 @@
                     app:srcCompat="@drawable/location" />
 
                 <EditText
-                    android:id="@+id/OrderRecepEmail"
-                    android:layout_width="240dp"
+                    android:id="@+id/OrderRecep_Address"
+                    android:layout_width="200dp"
                     android:layout_height="42dp"
                     android:layout_marginStart="16dp"
-                    android:text="@string/pvt_address"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
                     android:autofillHints="postalAddress"
                     android:inputType="textPostalAddress"
                     android:background="@drawable/no_underline_edittext"
@@ -413,10 +447,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecepEmail"
+                    app:layout_constraintBottom_toBottomOf="@+id/OrderRecep_Address"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/OrderRecepEmail"
+                    app:layout_constraintTop_toTopOf="@+id/OrderRecep_Address"
                     app:srcCompat="@drawable/baseline_edit_24" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/customer_s_f_name"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imageView22"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+                <TextView
+                    android:id="@+id/customers_f_name"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customer_s_f"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+                <TextView
+                    android:id="@+id/textView47"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/customer_s_l_name"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/customers_f_name"
+                    app:layout_constraintTop_toBottomOf="@+id/customers_f_name" />
+
+                <TextView
+                    android:id="@+id/customers_l_name"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customer_s_l"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
+                    app:layout_constraintStart_toStartOf="@+id/textView47"
+                    app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -425,11 +507,11 @@
                 android:id="@+id/textView31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:text="@string/pay_method"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="18sp"
+                android:layout_margin="16dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -459,8 +541,9 @@
                     android:layout_marginStart="16dp"
                     android:text="@string/amex"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9" />
@@ -493,6 +576,7 @@
                     android:background="@drawable/dark_moderate_blue_bg"
                     android:text="@string/checkout"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/poppins"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

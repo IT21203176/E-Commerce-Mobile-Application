@@ -72,6 +72,12 @@
     <string name="buy_now">Buy Now</string>
     <string name="vendor_detail">Vendor Name</string>
     <string name="vendor_n">Janu D</string>
+    <string name="checkout_cart">Cart Products</string>
+    <string name="customer_s_f_name">Customer\'s First Name</string>
+    <string name="customer_s_l_name">Customer\'s Last Name</string>
+    <string name="customer_s_f">Janithya</string>
+    <string name="customer_s_l">Dias</string>
+    <string name="create_order">Create Order</string>
     <string name="deactivate">Account Deactivation</string>
     <string name="deactivate_note">Ensuring that the user understand the\n consequences of deactivating their account (<b><i>loss of data, subscription, etc.</i></b>)</string>
 

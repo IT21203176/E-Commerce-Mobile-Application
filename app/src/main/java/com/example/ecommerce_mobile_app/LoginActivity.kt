@@ -1,18 +1,24 @@
 package com.example.ecommerce_mobile_app
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.Editable
 import android.text.Html
+import android.text.InputType
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.ecommerce_mobile_app.Model.UserLoginModel
 import com.example.ecommerce_mobile_app.databinding.ActivityLoginBinding
 import com.google.android.material.button.MaterialButton
@@ -89,6 +95,57 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        emailInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // No action needed here
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Validate email and update the icon accordingly
+                val emailText = s.toString()
+                if (isValidEmail(emailText)) {
+                    // Set the drawableEnd icon to green if the email is valid
+                    val greenIcon: Drawable? = ContextCompat.getDrawable(this@LoginActivity, R.drawable.done_icon_green)
+                    emailInput.setCompoundDrawablesWithIntrinsicBounds(null, null, greenIcon, null)
+                } else {
+                    // Set the drawableEnd icon to red if the email is invalid
+                    val redIcon: Drawable? = ContextCompat.getDrawable(this@LoginActivity, R.drawable.done_icon_red)
+                    emailInput.setCompoundDrawablesWithIntrinsicBounds(null, null, redIcon, null)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // No action needed here
+            }
+        })
+
+        var isPasswordVisible = false
+
+        passwordInput.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                // Check if the drawableEnd was clicked
+                if (event.rawX >= (passwordInput.right - passwordInput.compoundDrawables[2].bounds.width())) {
+                    // Toggle password visibility
+                    isPasswordVisible = !isPasswordVisible
+                    if (isPasswordVisible) {
+                        // Show password
+                        passwordInput.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                        val visibleIcon = ContextCompat.getDrawable(this, R.drawable.password_icon)
+                        passwordInput.setCompoundDrawablesWithIntrinsicBounds(null, null, visibleIcon, null)
+                    } else {
+                        // Hide password
+                        passwordInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        val hiddenIcon = ContextCompat.getDrawable(this, R.drawable.hidden)
+                        passwordInput.setCompoundDrawablesWithIntrinsicBounds(null, null, hiddenIcon, null)
+                    }
+                    // Move the cursor to the end of the text
+                    passwordInput.setSelection(passwordInput.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
+
     }
 
     private fun validateInputs(email: String, password: String): Boolean {
@@ -155,12 +212,14 @@ class LoginActivity : AppCompatActivity() {
                     editor.putString("token", response.token) // Save the token
                     editor.putString("userId", response.user.id) // Save the user ID
                     editor.putString("firstName", response.user.first_Name)
+                    editor.putString("lastName", response.user.last_Name)
                     editor.apply() // Save changes
 
                     // Log the saved user ID
                     Log.d("LoginActivity", "Saved token: ${response.token}")
                     Log.d("LoginActivity", "User ID saved: ${response.user.id}")
                     Log.d("LoginActivity", "Saved firstName: ${response.user.first_Name}")
+                    Log.d("LoginActivity", "Saved lastName: ${response.user.last_Name}")
 
                     // Show a success message
                     Toast.makeText(this@LoginActivity, response.message, Toast.LENGTH_SHORT).show()
@@ -193,7 +252,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
 
 
 }
