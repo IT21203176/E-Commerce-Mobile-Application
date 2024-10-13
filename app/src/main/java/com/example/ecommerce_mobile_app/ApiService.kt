@@ -3,10 +3,12 @@ package com.example.ecommerce_mobile_app
 import com.example.ecommerce_mobile_app.Model.Comments
 import com.example.ecommerce_mobile_app.Model.CustomerModel
 import com.example.ecommerce_mobile_app.Model.ItemModel
+import com.example.ecommerce_mobile_app.Model.Order
 import com.example.ecommerce_mobile_app.Model.OrderModel
 import com.example.ecommerce_mobile_app.Model.RankingComments
 import com.example.ecommerce_mobile_app.Model.UserLoginModel
 import com.example.ecommerce_mobile_app.Model.UserModel
+import com.example.ecommerce_mobile_app.Model.UserProfileModel
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -39,11 +41,15 @@ interface ApiService {
     @GET("Users/{id}")
     suspend fun getUserDetails(@Path("id") userId: String, @Header("Authorization") token: String): UserModel
 
-    /*@PUT("Users/update/{id}")
-    suspend fun updateUserDetails(@Path("id") userId: String, @Header("Authorization") token: String, @Body user: UserModel): Response<ResponseBody>*/
+    @PUT("Users/update/{id}")
+    suspend fun updateUser(
+        @Path("id") userId: String,
+        @Header("Authorization") token: String,
+        @Body updatedUserData: UserModel
+    ): Response<UserModel>
 
     @POST("Orders")
-    suspend fun createOrder(@Body order: OrderModel): Response<ResponseBody>
+    suspend fun createOrder(@Body order: Order): Response<Order>
 
     @POST("RankingComments")
     suspend fun postRanking(@Body rankingComments: RankingComments): Response<RankingComments>

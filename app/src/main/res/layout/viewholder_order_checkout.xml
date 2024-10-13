@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:padding="16dp">
 
     <ImageView
-        android:id="@+id/itemImage"
+        android:id="@+id/orderItemImage"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:background="#F2EDED"
@@ -18,39 +18,42 @@
         app:srcCompat="@drawable/shoes2" />
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/orderTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/title_cart_view_holder"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintStart_toEndOf="@+id/orderItemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/eachItemFee"
+        android:id="@+id/orderEachItemFee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lkr1"
+        android:fontFamily="@font/poppins"
         android:textColor="@color/dark_moderate_blue"
-        app:layout_constraintStart_toStartOf="@+id/titleText"
-        app:layout_constraintTop_toBottomOf="@+id/titleText" />
+        app:layout_constraintStart_toStartOf="@+id/orderTitleText"
+        app:layout_constraintTop_toBottomOf="@+id/orderTitleText" />
 
     <TextView
-        android:id="@+id/eachItemTotal"
+        android:id="@+id/orderEachItemTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lkr1"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="15sp"
+        android:fontFamily="@font/poppins"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/eachItemFee" />
+        app:layout_constraintStart_toStartOf="@+id/orderEachItemFee" />
 
     <ImageView
-        android:id="@+id/clearCartBtn"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:id="@+id/orderClearCartBtn"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
@@ -63,7 +66,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="100dp"
+        android:layout_width="82dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@drawable/grey_bg"
@@ -71,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/plusCartBtn"
+            android:id="@+id/orderPlusCartBtn"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_margin="2dp"
@@ -84,7 +87,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/minusCartBtn"
+            android:id="@+id/orderMinusCartBtn"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_margin="2dp"
@@ -97,16 +100,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/numOfItems"
+            android:id="@+id/orderNumOfItems"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/qty"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/plusCartBtn"
-            app:layout_constraintStart_toEndOf="@+id/minusCartBtn"
+            app:layout_constraintEnd_toStartOf="@+id/orderPlusCartBtn"
+            app:layout_constraintStart_toEndOf="@+id/orderMinusCartBtn"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

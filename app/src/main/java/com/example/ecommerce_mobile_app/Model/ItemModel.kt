@@ -12,6 +12,7 @@ data class ItemModel(
     val stockStatus: String,
     val image: String,
     val isActive: Boolean,
+    val product_idVendor: String,
     val productListName: String,
     val productVendorName: String
 ): Serializable
