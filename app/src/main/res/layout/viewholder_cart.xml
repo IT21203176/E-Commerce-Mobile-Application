@@ -54,12 +54,13 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/star_icon_description"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat= "@drawable/delete"
-        android:contentDescription="@string/star_icon_description"
-        app:tint="@color/red"/>
+        app:layout_constraintVertical_bias="0.428"
+        app:srcCompat="@drawable/delete"
+        app:tint="@color/red" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"

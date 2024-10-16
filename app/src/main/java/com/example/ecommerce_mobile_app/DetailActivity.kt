@@ -91,7 +91,8 @@ class DetailActivity : AppCompatActivity() {
         rateStar.setOnClickListener {
             val intent = Intent(this@DetailActivity, RateVendorActivity::class.java) // Make sure RateActivity exists
             intent.putExtra("productVendorName", product.productVendorName)
-            intent.putExtra("productId", product.id) // If you want to pass the product ID
+            intent.putExtra("productId", product.id)
+            intent.putExtra("productVendorId", product.product_idVendor)
             startActivity(intent)
         }
 

@@ -7,10 +7,18 @@
     <color name="dark_moderate_blue">#2a3577</color>
     <color name="grey_bg">#F2EDED</color>
     <color name="lightblue">#F0EFF5</color>
+    <color name="lighter_blue">#A4D5FF</color>
     <color name="blue">#2a3577</color>
     <color name="light_bg_blue">#DCEBF4</color>
     <color name="green">#189924</color>
+    <color name="lighter_green">#BEFAC1</color>
+    <color name="dark_green">#043505</color>
     <color name="red">#DB1818</color>
+    <color name="crimson_red">#EDA3A3</color>
+    <color name="light_pink">#FFA7FC</color>
+    <color name="pink">#8C0088</color>
     <color name="orange">#FF5722</color>
+    <color name="light_orange">#FBB9A2</color>
+    <color name="light_yellow">#FFDD8B</color>
     <color name="dialog_color_1">#2a3577</color>
 </resources>
