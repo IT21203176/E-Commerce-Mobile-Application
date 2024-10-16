@@ -78,8 +78,30 @@
     <string name="customer_s_f">Janithya</string>
     <string name="customer_s_l">Dias</string>
     <string name="create_order">Create Order</string>
+    <string name="order_track">Order Tracking</string>
+    <string name="order_tracking">Order Tracking Details</string>
+    <string name="o_date">Order Date</string>
+    <string name="o_recipient_name">Recipient Name</string>
+    <string name="o_recipient_contact">Recipient Contact No.</string>
+    <string name="o_recipient_address">Recipient Address</string>
+    <string name="o_customer_name">Customer Name</string>
+    <string name="order_status">Order Status</string>
+    <string name="order_cancellation">Order Cancellation</string>
+    <string name="order_cancellation_btn">Order Cancellation</string>
+    <string name="order_cancellation_q">Are you sure you want to request a cancellation for this order?</string>
+    <string name="order_cancellation_r_note">Type note if any</string>
+    <string name="order_status_stage">Delivered</string>
+    <string name="order_id">Order ID</string>
+    <string name="my_orders">My Orders</string>
+    <string name="o_status">Order Processing</string>
+    <string name="track_btn">Track</string>
     <string name="deactivate">Account Deactivation</string>
     <string name="deactivate_note">Ensuring that the user understand the\n consequences of deactivating their account (<b><i>loss of data, subscription, etc.</i></b>)</string>
+    <string name="o_product_name">Product Name</string>
+    <string name="o_product_v_name">Vendor Name</string>
+    <string name="notifications">Notifications</string>
+    <string name="notification_msg">Notification Message</string>
+    <string name="notification_date">Date</string>
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
@@ -107,6 +129,7 @@
     <string name="comments">Comments</string>
     <string name="rate_image">Rate Image</string>
     <string name="rate_title">Rate Me</string>
+    <string name="order_image">Order Image</string>
     <string name="rate_description">If you enjoyed purchasing from our store, would you mind rating your experience with us? Your feedback helps us improve and continue providing the best service possible.</string>
 
 </resources>

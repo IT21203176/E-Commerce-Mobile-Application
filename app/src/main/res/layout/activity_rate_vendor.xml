@@ -101,7 +101,7 @@
                 android:minHeight="100dp"
                 app:endIconMode="clear_text">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etRemarks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,6 +116,7 @@
                     android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <LinearLayout

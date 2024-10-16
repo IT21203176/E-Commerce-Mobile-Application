@@ -47,6 +47,22 @@ class ProductLActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.orderIcon.setOnClickListener {
+            val intent = Intent(this@ProductLActivity, OrderViewListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.cartIcon.setOnClickListener {
+            val intent = Intent(this@ProductLActivity, CartActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.notificationIcon.setOnClickListener {
+            val intent = Intent(this@ProductLActivity, NotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+
         initBanner()
 
         initCategory()

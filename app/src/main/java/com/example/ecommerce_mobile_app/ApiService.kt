@@ -3,6 +3,7 @@ package com.example.ecommerce_mobile_app
 import com.example.ecommerce_mobile_app.Model.Comments
 import com.example.ecommerce_mobile_app.Model.CustomerModel
 import com.example.ecommerce_mobile_app.Model.ItemModel
+import com.example.ecommerce_mobile_app.Model.NotificationModel
 import com.example.ecommerce_mobile_app.Model.Order
 import com.example.ecommerce_mobile_app.Model.OrderModel
 import com.example.ecommerce_mobile_app.Model.RankingComments
@@ -16,6 +17,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -57,6 +59,22 @@ interface ApiService {
     @POST("RankingComments/addComment")
     suspend fun postComment(@Body comments: Comments): Response<Comments>
 
+    @GET("Orders")
+    fun getOrdersByCustomerId(
+        @Query("customerId") customerId: String
+    ): Call<List<Order>>
+
+    @GET("Orders/{id}")
+    fun getOrderDetails(@Path("id") orderId: String): Call<Order>
+
+    @PATCH("Orders/{id}/cancel-request")
+    suspend fun requestOrderCancel(
+        @Path("id") orderId: String,
+        @Body cancellationNote: String
+    ): Response<Order>
+
+    @GET("Notifications/{receiverId}")
+    fun getNotifications(@Path("receiverId") receiverId: String): Call<List<NotificationModel>>
 }
 
 data class LoginResponseModel(
@@ -64,4 +82,3 @@ data class LoginResponseModel(
     val user: LoginUserModel,
     val message: String
 )
-

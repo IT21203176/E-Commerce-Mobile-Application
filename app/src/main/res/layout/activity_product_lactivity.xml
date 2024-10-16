@@ -52,19 +52,12 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView13"
+                    android:id="@+id/notification_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    app:srcCompat="@drawable/bell" />
+                    app:srcCompat="@drawable/notification" />
 
-                <ImageView
-                    android:id="@+id/imageView14"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
-                    app:srcCompat="@drawable/magnifier" />
 
             </LinearLayout>
 

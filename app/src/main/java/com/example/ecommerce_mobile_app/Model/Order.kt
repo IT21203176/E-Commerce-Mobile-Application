@@ -33,7 +33,7 @@ data class OrderItem(
 
 data class OrderItem(
     val productId: String,
-    val productName: String,
+    val productName: String?,
     val vendorId: String,
     val unitPrice: Double,
     val quantity: Int,
@@ -50,7 +50,7 @@ data class Order(
     val status: Int,
     val orderItems: List<OrderItem>,
     val orderItemCount: Int,
-    val isCancellationRequested: Boolean,
+    var isCancellationRequested: Boolean,
     val cancellationNote: String?,
     val isCancellationApproved: Int,
     val recipient_Name: String,
