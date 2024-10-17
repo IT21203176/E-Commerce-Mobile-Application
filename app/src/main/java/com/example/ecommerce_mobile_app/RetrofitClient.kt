@@ -9,7 +9,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitClient {
 
-    //private const val BASE_URL ="https://wizard-world-api.herokuapp.com/"
     private const val BASE_URL ="http://10.0.2.2:5129/api/"
 
     private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
