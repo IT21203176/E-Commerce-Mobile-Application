@@ -6,6 +6,6 @@ data class NotificationModel(
     val message: String,
     val isVisibleToAdmin: Boolean,
     val isVisibleToCSR: Boolean,
-    val isVisibleToVendor: Boolean,
+    val isVisibleTovendor: Boolean,
     val createdAt: String
 )
