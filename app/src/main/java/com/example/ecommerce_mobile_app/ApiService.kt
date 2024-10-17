@@ -57,7 +57,7 @@ interface ApiService {
     suspend fun postRanking(@Body rankingComments: RankingComments): Response<RankingComments>
 
     @POST("RankingComments/addComment")
-    suspend fun postComment(@Body comments: Comments): Response<Comments>
+    fun addComment(@Body comment: Comments): Call<Void>
 
     @GET("Orders")
     fun getOrdersByCustomerId(
@@ -75,6 +75,9 @@ interface ApiService {
 
     @GET("Notifications/{receiverId}")
     fun getNotifications(@Path("receiverId") receiverId: String): Call<List<NotificationModel>>
+
+    @GET("RankingComments/vendorComments/{vendorId}")
+    fun getComments(@Path("vendorId") vendorId: String): Call<List<Comments>>
 }
 
 data class LoginResponseModel(

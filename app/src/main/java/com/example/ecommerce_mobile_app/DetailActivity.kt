@@ -71,6 +71,14 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.addComment.setOnClickListener {
+            val intent = Intent(this@DetailActivity, VendorCommentingActivity::class.java)
+            intent.putExtra("productVendorName", product.productVendorName)
+            intent.putExtra("productId", product.id)
+            intent.putExtra("productVendorId", product.product_idVendor)
+            startActivity(intent)
+        }
+
         // Modify buyNowBtn click to add only the selected product to the cart
         binding.buyNowBtn.setOnClickListener {
             if (product.stock > 0) { // Check if the product is in stock

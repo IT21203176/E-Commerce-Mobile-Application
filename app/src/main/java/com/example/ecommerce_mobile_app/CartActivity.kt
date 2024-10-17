@@ -60,7 +60,7 @@ class CartActivity : AppCompatActivity() {
         }
 
         binding.backButton.setOnClickListener {
-            finish() // Close the cart activity and go back to the previous screen
+            finish()
         }
     }
 

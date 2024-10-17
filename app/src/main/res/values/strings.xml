@@ -102,6 +102,9 @@
     <string name="notifications">Notifications</string>
     <string name="notification_msg">Notification Message</string>
     <string name="notification_date">Date</string>
+    <string name="comment">Comment</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="add_your_comment">Write your comment here</string>
 
     <string name="edit_icon_description">Edit Contact Information</string>
     <string name="phone_icon_description">Phone Icon</string>
