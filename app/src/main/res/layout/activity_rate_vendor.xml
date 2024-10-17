@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="567dp"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:padding="32dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -95,27 +95,6 @@
                 android:layout_marginBottom="20dp"
                 android:rating="0" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:minHeight="100dp"
-                app:endIconMode="clear_text">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etRemarks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="top|start"
-                    android:hint="@string/remarks"
-                    android:inputType="textMultiLine"
-                    android:lines="5"
-                    android:maxLines="5"
-                    android:minLines="5"
-                    android:textColorHint="@color/grey"
-                    android:textSize="14sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
 
 
