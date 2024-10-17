@@ -1,7 +1,6 @@
 package com.example.ecommerce_mobile_app
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -9,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce_mobile_app.Adapter.CommentAdapter
-import com.example.ecommerce_mobile_app.Adapter.OrderItemAdapter
 import com.example.ecommerce_mobile_app.Model.Comments
-import com.example.ecommerce_mobile_app.Model.Order
 import com.google.android.material.button.MaterialButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,32 +18,31 @@ class VendorCommentingActivity : AppCompatActivity() {
 
     private lateinit var commentEditText: EditText
     private lateinit var submitCommentBtn: MaterialButton
-    private lateinit var commentsRecyclerView: RecyclerView
     private lateinit var commentsAdapter: CommentAdapter
+    private lateinit var commentsRecyclerView: RecyclerView
     private lateinit var commentsList: MutableList<Comments>
 
     private lateinit var customerId: String
     private lateinit var customerName: String
 
     private lateinit var vendorId: String
-    private lateinit var comment: Comments
+    private var editingCommentId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vendor_commenting)
 
-        // Initialize views
         commentEditText = findViewById(R.id.commentEditText)
         submitCommentBtn = findViewById(R.id.submitCommentBtn)
-        commentsRecyclerView = findViewById(R.id.commentsRecyclerView)
+        commentsRecyclerView = findViewById(R.id.customerCommentsRv)
 
-        // Set up RecyclerView
         commentsRecyclerView.layoutManager = LinearLayoutManager(this)
         commentsList = mutableListOf()
-        commentsAdapter = CommentAdapter(commentsList)
+        commentsAdapter = CommentAdapter(commentsList) { comment ->
+            showEditDialog(comment)
+        }
         commentsRecyclerView.adapter = commentsAdapter
 
-        // Assign vendorId to the class-level variable
         vendorId = intent.getStringExtra("productVendorId").orEmpty()
 
         if (vendorId.isEmpty()) {
@@ -54,20 +50,21 @@ class VendorCommentingActivity : AppCompatActivity() {
             return
         }
 
-
-        // Retrieve customer details
         retrieveCustomerDetails()
 
-        // Set click listener for submit button
         submitCommentBtn.setOnClickListener {
             val commentText = commentEditText.text.toString()
             if (commentText.isNotBlank()) {
-                addComment(commentText)
+                if (editingCommentId != null) {
+                    updateComment(editingCommentId!!, commentText)
+                } else {
+                    addComment(commentText)
+                }
             } else {
                 Toast.makeText(this, "Comment cannot be empty", Toast.LENGTH_SHORT).show()
             }
         }
-        // Load existing comments
+
         loadComments()
 
         findViewById<ImageView>(R.id.commentBackBtn).setOnClickListener {
@@ -80,12 +77,8 @@ class VendorCommentingActivity : AppCompatActivity() {
         customerId = sharedPref.getString("userId", "").orEmpty()
         customerName = sharedPref.getString("firstName", "").orEmpty()
 
-        Log.d("VendorCommentingActivity", "Retrieved customerId: $customerId")
-        Log.d("VendorCommentingActivity", "Retrieved customerName: $customerName")
-
         if (customerId.isEmpty() || customerName.isEmpty()) {
-            Toast.makeText(this, "User session not found. Please log in again.", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(this, "User session not found. Please log in again.", Toast.LENGTH_SHORT).show()
             finish()
         }
     }
@@ -102,40 +95,28 @@ class VendorCommentingActivity : AppCompatActivity() {
         RetrofitClient.apiService.addComment(comment).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(
-                        this@VendorCommentingActivity,
-                        "Comment added successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@VendorCommentingActivity, "Comment added successfully", Toast.LENGTH_SHORT).show()
                     commentEditText.text.clear()
                     loadComments()
                 } else {
-                    Toast.makeText(
-                        this@VendorCommentingActivity,
-                        "Failed to add comment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@VendorCommentingActivity, "Failed to add comment", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(
-                    this@VendorCommentingActivity,
-                    "Error: ${t.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@VendorCommentingActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    /*private fun loadComments() {
+    private fun loadComments() {
         RetrofitClient.apiService.getComments(vendorId).enqueue(object : Callback<List<Comments>> {
             override fun onResponse(call: Call<List<Comments>>, response: Response<List<Comments>>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        commentsList.clear() // Clear existing comments
-                        commentsList.addAll(it) // Add new comments
-                        commentsAdapter.notifyDataSetChanged() // Notify adapter of data change
+                        commentsList.clear()
+                        commentsList.addAll(it)
+                        commentsAdapter.notifyDataSetChanged()
                     }
                 } else {
                     Toast.makeText(this@VendorCommentingActivity, "Failed to load comments", Toast.LENGTH_SHORT).show()
@@ -146,40 +127,38 @@ class VendorCommentingActivity : AppCompatActivity() {
                 Toast.makeText(this@VendorCommentingActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-    }*/
-    private fun loadComments() {
-        RetrofitClient.apiService.getComments(vendorId).enqueue(object : Callback<List<Comments>> {
-            override fun onResponse(
-                call: Call<List<Comments>>,
-                response: Response<List<Comments>>
-            ) {
+    }
+
+    private fun showEditDialog(comment: Comments) {
+        editingCommentId = comment.id
+        commentEditText.setText(comment.comment)
+        submitCommentBtn.text = "Update Comment"
+    }
+
+    private fun updateComment(commentId: String, newCommentText: String) {
+        val updatedComment = Comments(
+            id = commentId,
+            customerId = customerId,
+            vendorId = vendorId,
+            comment = newCommentText,
+            customerName = customerName
+        )
+
+        RetrofitClient.apiService.editComment(commentId, updatedComment).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                        commentsList.clear() // Clear existing comments
-                        commentsList.addAll(it) // Add new comments
-
-                        // Set up CommentAdapter and bind it to the RecyclerView
-                        val commentItemAdapter = CommentAdapter(commentsList)
-                        commentsRecyclerView.adapter = commentItemAdapter
-
-                        // Notify adapter of data change
-                        commentItemAdapter.notifyDataSetChanged()
-                    }
+                    Toast.makeText(this@VendorCommentingActivity, "Comment updated successfully", Toast.LENGTH_SHORT).show()
+                    editingCommentId = null
+                    commentEditText.text.clear()
+                    submitCommentBtn.text = "Submit Comment"
+                    loadComments()
                 } else {
-                    Toast.makeText(
-                        this@VendorCommentingActivity,
-                        "Failed to load comments",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@VendorCommentingActivity, "Failed to update comment", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<List<Comments>>, t: Throwable) {
-                Toast.makeText(
-                    this@VendorCommentingActivity,
-                    "Error: ${t.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(this@VendorCommentingActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

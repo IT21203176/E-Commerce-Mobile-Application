@@ -78,6 +78,9 @@ interface ApiService {
 
     @GET("RankingComments/vendorComments/{vendorId}")
     fun getComments(@Path("vendorId") vendorId: String): Call<List<Comments>>
+
+    @PUT("RankingComments/editComment/{commentId}")
+    fun editComment(@Path("commentId") commentId: String, @Body updatedComment: Comments): Call<Void>
 }
 
 data class LoginResponseModel(

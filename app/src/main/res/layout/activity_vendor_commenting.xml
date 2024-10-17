@@ -130,12 +130,10 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/commentsRecyclerView"
+                    android:id="@+id/customerCommentsRv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="32dp"
-                    android:nestedScrollingEnabled="false"/>
-
+                    android:layout_marginTop="32dp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
